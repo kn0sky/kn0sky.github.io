@@ -17,7 +17,7 @@
 <meta property="og:description" content="Hexo及其环境的安装安装Hexo需要Node.js和Git环境，Hexo安装方法和过程参考官方文档 初始化hexo文件夹：1$ hexo init &lt;floder_name&gt;  初始化完成后，文件夹结构如下： 12345678.├── _config.yml├── package.json├── scaffolds├── source|   ├── _drafts|   └── _p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-12T11:38:51.000Z">
-<meta property="article:modified_time" content="2020-03-14T06:34:39.265Z">
+<meta property="article:modified_time" content="2020-03-14T06:47:27.539Z">
 <meta property="article:author" content="kn0sky">
 <meta property="article:tag" content="kn0sky">
 <meta name="twitter:card" content="summary">
@@ -428,6 +428,14 @@
 </li>
 </ol>
 <h4 id="使用脚本一键部署"><a href="#使用脚本一键部署" class="headerlink" title="使用脚本一键部署"></a>使用脚本一键部署</h4><p>每次部署都需要三条命令，过于麻烦，我们可以写个脚本将三条命令进行简化</p>
+<p>shell脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>python脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">'hexo clean'</span>)</span><br><span class="line">os.system(<span class="string">'hexo g'</span>)</span><br><span class="line">os.system(<span class="string">'hexo d'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h4><h4 id="自动化部署到Github-Page"><a href="#自动化部署到Github-Page" class="headerlink" title="自动化部署到Github Page"></a>自动化部署到Github Page</h4><p> 使用<a href="https://travis-ci.com/" target="_blank" rel="external nofollow noopener noreferrer">Travis CI</a> 将 Hexo 博客部署到 GitHub Pages 上可实现自动化部署，只需要我们将站点文件push到github上，即可自动部署成博客</p>
 <p>如果不希望自己的站点文件公开的话，还是建议使用上面的手动部署方法</p>
 <p>详细教程请参考<a href="https://hexo.io/zh-cn/docs/github-pages" target="_blank" rel="external nofollow noopener noreferrer">hexo相关文档</a></p>
