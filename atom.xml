@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-04-12T05:42:24.000Z</updated>
+  <updated>2020-04-14T09:40:50.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://kn0sky.com/wiki/test/"/>
+    <id>http://kn0sky.com/wiki/test/</id>
+    <published>2020-04-14T09:40:50.000Z</published>
+    <updated>2020-04-14T09:40:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href></a></li><li><a href></a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/u
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>汇编基础07：比较指令</title>
@@ -69,32 +95,6 @@
   </entry>
   
   <entry>
-    <title>51单片机入门01--LED流水灯</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/</id>
-    <published>2020-04-04T15:27:19.000Z</published>
-    <updated>2020-04-07T10:31:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="51单片机入门01–LED流水灯"><a href="#51单片机入门01–LED流水灯" class="headerlink" title="51单片机入门01–LED流水灯"></a>51单片机入门01–LED流水灯</h1><h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul><li>Protues</li><li>Keil</li></ul><h2 id="电路图"><a href="#电路图" class="headerlink" title="电路图"></a>电路图</h2><p><img src="51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF%5C01.png" alt> </p><p><img src="01.png" alt></p><p>能流过LED的电流大概是20mA，所以需要加大于250Ω的电阻</p><p>仿真软件单片机内部自带复位和时钟电路</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>延时程序</strong>：通过空执行循环来达到延时的效果，120次大概是1ms</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;&lt;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p><strong>LED流水灯程序：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>led1函数为共阳的8个led进行流水灯操作</p><p>led2函数为共阴的8个led进行流水灯操作</p><p>led2函数执行完之后，P1.7端口依然处于高电平，此处用<code>P1 = 0x00；</code>来熄灭</p></blockquote><hr><p><strong>完整代码：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"reg51.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">led1();</span><br><span class="line">led2();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>主程序里，先将与P1连接的灯全部熄灭再进行16个led的流水灯操作比较好看</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;a href=&quot;#51单片机入门01–LED流水灯&quot; class=&quot;headerlink&quot; title=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;/a&gt;51单片机入门01–LED流水灯&lt;/h1&gt;&lt;h2 id=&quot;实验环境&quot;&gt;&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>汇编基础06：数据传送指令</title>
     <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/"/>
     <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/</id>
@@ -116,6 +116,32 @@
       <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机入门01--LED流水灯</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/</id>
+    <published>2020-04-04T15:27:19.000Z</published>
+    <updated>2020-04-07T10:31:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="51单片机入门01–LED流水灯"><a href="#51单片机入门01–LED流水灯" class="headerlink" title="51单片机入门01–LED流水灯"></a>51单片机入门01–LED流水灯</h1><h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul><li>Protues</li><li>Keil</li></ul><h2 id="电路图"><a href="#电路图" class="headerlink" title="电路图"></a>电路图</h2><p><img src="51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF%5C01.png" alt> </p><p><img src="01.png" alt></p><p>能流过LED的电流大概是20mA，所以需要加大于250Ω的电阻</p><p>仿真软件单片机内部自带复位和时钟电路</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>延时程序</strong>：通过空执行循环来达到延时的效果，120次大概是1ms</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;&lt;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p><strong>LED流水灯程序：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>led1函数为共阳的8个led进行流水灯操作</p><p>led2函数为共阴的8个led进行流水灯操作</p><p>led2函数执行完之后，P1.7端口依然处于高电平，此处用<code>P1 = 0x00；</code>来熄灭</p></blockquote><hr><p><strong>完整代码：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"reg51.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">led1();</span><br><span class="line">led2();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>主程序里，先将与P1连接的灯全部熄灭再进行16个led的流水灯操作比较好看</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;a href=&quot;#51单片机入门01–LED流水灯&quot; class=&quot;headerlink&quot; title=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;/a&gt;51单片机入门01–LED流水灯&lt;/h1&gt;&lt;h2 id=&quot;实验环境&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
