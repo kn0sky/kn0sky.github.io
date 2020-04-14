@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="kn0sky&#39;wiki">
 <meta property="og:description" content="借助云服务器实现hexo全自动部署大家好，我是kn0sky，上一篇我们用hexo搭建了wiki主题个人博客，这次我们来讲讲部署hexo文章我们可以如何偷懒。不想直接把站点文件都传到github上，那自己发布hexo文章需要依次执行3条命令，懒惰的我觉得太麻烦了，于是简单写了个脚本将三条hexo命令简化成一条执行脚本命令，但发布文章还是要执行一条命令啊，还是太麻烦了，后来就在想啊，能不能一条命令也不">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
 <meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
 <meta property="og:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/2.png">
 <meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/2.png">
 <meta property="og:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/3.png">
 <meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/3.png">
 <meta property="article:published_time" content="2020-03-15T14:36:10.000Z">
-<meta property="article:modified_time" content="2020-04-14T09:47:10.000Z">
+<meta property="article:modified_time" content="2020-04-14T10:13:53.000Z">
 <meta property="article:author" content="kn0sky">
 <meta property="article:tag" content="kn0sky">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
     
 
     
@@ -399,7 +399,7 @@
         
             <h1 id="借助云服务器实现hexo全自动部署"><a href="#借助云服务器实现hexo全自动部署" class="headerlink" title="借助云服务器实现hexo全自动部署"></a>借助云服务器实现hexo全自动部署</h1><p>大家好，我是kn0sky，上一篇我们用hexo搭建了wiki主题个人博客，这次我们来讲讲部署hexo文章我们可以如何偷懒。不想直接把站点文件都传到github上，那自己发布hexo文章需要依次执行3条命令，懒惰的我觉得太麻烦了，于是简单写了个脚本将三条hexo命令简化成一条执行脚本命令，但发布文章还是要执行一条命令啊，还是太麻烦了，后来就在想啊，能不能一条命令也不用输入，完全自动发布文章呢，于是有了本文。</p>
 <p>本文的实现思路如下：通过云服务器的定时任务以及和云服务器的实时同步文件来实现全自动部署工作。</p>
-<p><img src="/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg" alt></p>
+<p><img src="./%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg" alt></p>
 <p><img src="1.jpg" alt></p>
 <p>本文内容分为如下几部分：</p>
 <ul>
@@ -502,7 +502,7 @@
 <p>部署脚本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> ~/hexo-wiki</span><br><span class="line">nohup hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &gt;&gt; ~/crontab_script/hexo_auto_depoly.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'-----------------------'</span></span><br><span class="line"><span class="built_in">echo</span> `date -d <span class="string">'now'</span>` &gt;&gt; ~/crontab_script/blog_auto_deploy.log</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"[+]完成部署！"</span> &gt;&gt; ~/crontab_script/blog_auto_deploy.log</span><br></pre></td></tr></table></figure>
 
-<p>部署脚本还有待优化，回头我给补上，让脚本先判断文章内容是否有变更，如果有，就自动部署，如果没有，就跳过本次部署</p>
+<p>这里使用git进行自动部署，git会自动检测提交的内容同上次提交相比是否有变更，如果有，就部署，反之，不部署。</p>
 <h3 id="设置定时任务"><a href="#设置定时任务" class="headerlink" title="设置定时任务"></a>设置定时任务</h3><p>使用<code>crontab</code>工具设置定时任务，使用如下命令进入编辑页面</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -e</span><br></pre></td></tr></table></figure>
 
