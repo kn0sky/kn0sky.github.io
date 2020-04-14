@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-03-17T03:23:02.000Z</updated>
+  <updated>2020-04-12T05:42:24.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -17,33 +17,319 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>常用站点汇总</title>
-    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99%E6%B1%87%E6%80%BB/"/>
-    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99%E6%B1%87%E6%80%BB/</id>
-    <published>2020-03-17T03:21:13.000Z</published>
-    <updated>2020-03-17T03:23:02.000Z</updated>
+    <title>汇编基础07：比较指令</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/</id>
+    <published>2020-04-11T07:27:19.000Z</published>
+    <updated>2020-04-12T05:42:24.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="做图类："><a href="#做图类：" class="headerlink" title="做图类："></a>做图类：</h2><p>ProcessOn：<a href="https://www.processon.com/" target="_blank" rel="external nofollow noopener noreferrer">https://www.processon.com/</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href></a></li><li><a href></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="汇编基础07：比较指令"><a href="#汇编基础07：比较指令" class="headerlink" title="汇编基础07：比较指令"></a>汇编基础07：比较指令</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;做图类：&quot;&gt;&lt;a href=&quot;#做图类：&quot; class=&quot;headerlink&quot; title=&quot;做图类：&quot;&gt;&lt;/a&gt;做图类：&lt;/h2&gt;&lt;p&gt;ProcessOn：&lt;a href=&quot;https://www.processon.com/&quot; target=&quot;_blank&quot;
+        &lt;h1 id=&quot;汇编基础07：比较指令&quot;&gt;&lt;a href=&quot;#汇编基础07：比较指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础07：比较指令&quot;&gt;&lt;/a&gt;汇编基础07：比较指令&lt;/h1&gt;
       
     
     </summary>
     
     
-      <category term="计算机基础操作篇" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/"/>
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端入门01--HTML和CSS基础</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A801--HTML&amp;CSS%E5%9F%BA%E7%A1%80/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A801--HTML&amp;CSS%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-04-06T17:17:33.000Z</published>
+    <updated>2020-04-08T09:16:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前端入门-01-–-HTML和CSS基础"><a href="#前端入门-01-–-HTML和CSS基础" class="headerlink" title="前端入门 01 – HTML和CSS基础"></a>前端入门 01 – HTML和CSS基础</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>编辑器：</p><ul><li>VS Code</li></ul><p>插件：</p><ul><li>City Lights Theme</li><li>Live Server</li><li>prettier</li><li>vim</li></ul><h2 id="HTML-最基础的结构"><a href="#HTML-最基础的结构" class="headerlink" title="HTML 最基础的结构"></a>HTML 最基础的结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="引用-CSS-样式"><a href="#引用-CSS-样式" class="headerlink" title="引用 CSS 样式"></a>引用 CSS 样式</h2><p>有三种方式引用CSS：</p><ul><li>内部引用，CSS比较少时，写在一个文件中看起来方便，或者用在复杂的覆盖层级</li></ul><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>外部引用，写在单独一个文件时比较方便，使用在CSS较多时，或者用他人CSS时</li></ul><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>内联样式，作为元素的style属性，常用于覆盖其他样式</li></ul><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:50px;"</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span></span><br><span class="line">    hello world</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><blockquote><p>内部引用样式优先级顺序取决于写在style标签里的先后顺序，写在后面的会覆盖写在前面的样式</p></blockquote><blockquote><p>三种样式引用优先级顺序为：内联样式 &gt; 内部样式 &gt; 外部样式</p></blockquote><h3 id="样式选择器"><a href="#样式选择器" class="headerlink" title="样式选择器"></a>样式选择器</h3><ul><li>id选择器：选取id属性，例如：<code>#red</code></li><li>类选择器：选取class属性，例如：<code>.red</code></li><li>类型选择器：选取元素类型，例如：<code>div</code></li></ul><h3 id="CSS-基本写法"><a href="#CSS-基本写法" class="headerlink" title="CSS 基本写法"></a>CSS 基本写法</h3><p>基本格式：选择器 + {属性;}</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.red</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>:red;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>属性名称中带有<code>-</code> 的为子属性</p></blockquote><p>让元素横着排列：向CSS中添加flex属性</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:flex</span></span><br></pre></td></tr></table></figure><p>改变元素轴向分布：使用justify-content属性</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">居中对齐</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:center</span></span><br></pre></td></tr></table></figure><p>加边框：使用border属性</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-width</span><span class="selector-pseudo">:10px</span>;</span><br><span class="line"><span class="selector-tag">border-style</span><span class="selector-pseudo">:solid</span>;</span><br></pre></td></tr></table></figure><p>使用flex居中：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span>: <span class="selector-tag">center</span>;</span><br><span class="line"><span class="selector-tag">align-items</span>: <span class="selector-tag">center</span>;</span><br></pre></td></tr></table></figure><h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>待补充</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前端入门-01-–-HTML和CSS基础&quot;&gt;&lt;a href=&quot;#前端入门-01-–-HTML和CSS基础&quot; class=&quot;headerlink&quot; title=&quot;前端入门 01 – HTML和CSS基础&quot;&gt;&lt;/a&gt;前端入门 01 – HTML和CSS基础&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端入门学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机入门01--LED流水灯</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/</id>
+    <published>2020-04-04T15:27:19.000Z</published>
+    <updated>2020-04-07T10:31:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="51单片机入门01–LED流水灯"><a href="#51单片机入门01–LED流水灯" class="headerlink" title="51单片机入门01–LED流水灯"></a>51单片机入门01–LED流水灯</h1><h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul><li>Protues</li><li>Keil</li></ul><h2 id="电路图"><a href="#电路图" class="headerlink" title="电路图"></a>电路图</h2><p><img src="51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF%5C01.png" alt> </p><p><img src="01.png" alt></p><p>能流过LED的电流大概是20mA，所以需要加大于250Ω的电阻</p><p>仿真软件单片机内部自带复位和时钟电路</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>延时程序</strong>：通过空执行循环来达到延时的效果，120次大概是1ms</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;&lt;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p><strong>LED流水灯程序：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>led1函数为共阳的8个led进行流水灯操作</p><p>led2函数为共阴的8个led进行流水灯操作</p><p>led2函数执行完之后，P1.7端口依然处于高电平，此处用<code>P1 = 0x00；</code>来熄灭</p></blockquote><hr><p><strong>完整代码：</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"reg51.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span>  <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led1</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123;</span><br><span class="line">P2=~(<span class="number">0x01</span>&lt;&lt;i);<span class="comment">//0000 0001 --&gt; 0000 0010  --&gt; 0000 0100</span></span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">P1=<span class="number">0x01</span>&lt;&lt;i;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">P1 = <span class="number">0x00</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">led1();</span><br><span class="line">led2();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>主程序里，先将与P1连接的灯全部熄灭再进行16个led的流水灯操作比较好看</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;a href=&quot;#51单片机入门01–LED流水灯&quot; class=&quot;headerlink&quot; title=&quot;51单片机入门01–LED流水灯&quot;&gt;&lt;/a&gt;51单片机入门01–LED流水灯&lt;/h1&gt;&lt;h2 id=&quot;实验环境&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础06：数据传送指令</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/</id>
+    <published>2020-04-04T15:27:19.000Z</published>
+    <updated>2020-04-04T15:28:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础06：数据传送指令"><a href="#汇编基础06：数据传送指令" class="headerlink" title="汇编基础06：数据传送指令"></a>汇编基础06：数据传送指令</h1><h2 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h2><p>格式：MOV OPDR1,OPDR2</p><p>功能：将一个源操作数传送到目的操作数中</p><p>OPDR1为目的操作数，可以使寄存器、存储器、累加器</p><p>OPDR2为源操作数，可以使寄存器、存储器、累加器、立即数</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,1</span><br><span class="line">mov ebx ,eax</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="LEA指令"><a href="#LEA指令" class="headerlink" title="LEA指令"></a>LEA指令</h2><p>有效地址传送指令</p><p>格式：LEA OPDR1,OPDR2</p><p>功能：将源操作数给出的有效地址传送到制定寄存器中</p><p>OPDR1必须是寄存器</p><blockquote><p>将OPDR2的内存地址给了OPDR1</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">lea eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="XCHG指令"><a href="#XCHG指令" class="headerlink" title="XCHG指令"></a>XCHG指令</h2><p>数据交换指令</p><p>格式：XCHG OPDR1, OPDR2</p><p>功能，两个操作数的值互换</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">xchg eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;a href=&quot;#汇编基础06：数据传送指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;/a&gt;汇编基础06：数据传送指令&lt;/h1&gt;&lt;h2 id=&quot;MOV指令&quot;&gt;&lt;a href=&quot;#MOV指
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础05：堆栈</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/</id>
+    <published>2020-04-04T14:27:19.000Z</published>
+    <updated>2020-04-04T14:43:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础05：堆栈"><a href="#汇编基础05：堆栈" class="headerlink" title="汇编基础05：堆栈"></a>汇编基础05：堆栈</h1><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><ul><li><p>栈是一种后进先出的存储区域，位于堆栈段中，SS段寄存器描述的就是堆栈段的段地址</p></li><li><p>栈的数据出口位于栈顶，也就是esp寄存器指向的位置</p></li><li><p>栈顶是低位，也就是地址较小的一侧，由ebp寄存器指向栈底，不会改变</p></li></ul><p>作用：</p><ul><li>存储少量数据</li><li>保存寄存器环境</li><li>传递参数</li></ul><h2 id="栈操作"><a href="#栈操作" class="headerlink" title="栈操作"></a>栈操作</h2><p>PUSH：压栈指令，32位汇编首先ESP-4，留出一个空间，然后把要压入栈中的内容压入</p><p>POP：出栈指令，32位汇编首先将栈顶的数据弹出给指定目标，然后ESP+4，清理空间</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础05：堆栈&quot;&gt;&lt;a href=&quot;#汇编基础05：堆栈&quot; class=&quot;headerlink&quot; title=&quot;汇编基础05：堆栈&quot;&gt;&lt;/a&gt;汇编基础05：堆栈&lt;/h1&gt;&lt;h2 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础04：循环</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/</id>
+    <published>2020-04-04T13:27:19.000Z</published>
+    <updated>2020-04-04T14:09:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础04：循环"><a href="#汇编基础04：循环" class="headerlink" title="汇编基础04：循环"></a>汇编基础04：循环</h1><p>循环控制指令：LOOP</p><p>格式：LOOP 标号</p><p>功能：(CX) &lt;–（CX）-1，（CX）&lt;&gt;0，则转移至标号处循环执行，直至(CX)=0，继续执行后续指令</p><blockquote><p> LOOP执行一次，cx-1，如果cx=0，则会无限循环</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,1</span><br><span class="line">mov ebx ,1</span><br><span class="line">mov ecx ,3</span><br><span class="line">s:</span><br><span class="line">add eax ,ebx</span><br><span class="line">loop s</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><p>练习：1+2+3+…+100</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,0</span><br><span class="line">mov ecx ,100</span><br><span class="line">s:</span><br><span class="line">add eax ,ecx</span><br><span class="line">loop s</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><p>练习：1+2+4+8+….+2147483648(0x80000000)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,1</span><br><span class="line">mov ebx ,0</span><br><span class="line">mov ecx ,32</span><br><span class="line">s:</span><br><span class="line">mov edx ,2</span><br><span class="line">add ebx ,eax</span><br><span class="line">mul edx</span><br><span class="line">loop s</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础04：循环&quot;&gt;&lt;a href=&quot;#汇编基础04：循环&quot; class=&quot;headerlink&quot; title=&quot;汇编基础04：循环&quot;&gt;&lt;/a&gt;汇编基础04：循环&lt;/h1&gt;&lt;p&gt;循环控制指令：LOOP&lt;/p&gt;
+&lt;p&gt;格式：LOOP 标号&lt;/p&gt;
+&lt;p&gt;功能：(C
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础03：数学运算&amp;逻辑运算</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&amp;%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&amp;%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/</id>
+    <published>2020-04-04T12:27:19.000Z</published>
+    <updated>2020-04-04T13:32:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础03：数学运算-amp-逻辑运算"><a href="#汇编基础03：数学运算-amp-逻辑运算" class="headerlink" title="汇编基础03：数学运算&amp;逻辑运算"></a>汇编基础03：数学运算&amp;逻辑运算</h1><h2 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h2><h3 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h3><p>加法指令：ADD</p><p>格式：ADD OPRD1 ,OPRD2</p><p>功能：两数相加</p><p>加法指令运算结果对CF，SF，OF，PF，ZF，AF都有影响，不允许OPRD1 和OPRD2同时为存储器</p><p>带进位的加法指令：ADC</p><p>功能：OPDR1= OPDR1 + OPDR2 + CF</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,5</span><br><span class="line">mov ebx ,5</span><br><span class="line">add eax ,ebx</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><hr><h3 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h3><p>减法指令：SUB</p><p>格式：SUB OPRD1,OPRD2</p><p>功能：两个操作数相减，从OPDR1中减去OPDR2，结果保存在OPDR1中</p><p>立即数不能用于目的操作数，两个存储器之间的操作数之间不能直接相减，操作数可为8位或16位的无符号数或带符号数</p><p>带借位减法指令：SBB</p><p>格式：SBB OPDR1,OPDR2</p><p>功能：OPDR1 = OPDR1 - OPDR2 -CF</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,15</span><br><span class="line">mov ebx ,5</span><br><span class="line">sub eax ,ebx</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><hr><h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><p>无符号位乘法指令：MUL</p><p>格式：MUL OPDR</p><p>带符号位乘法指令：IMUL</p><p>格式：IMUL OPDR</p><p>功能：乘法操作</p><p>OPDR位通用寄存器或存储器操作数</p><p>本指令影响标志位：CF，OF</p><blockquote><p>乘法指令是将操作数*EAX，并将结果返回EAX，所以只需要一个操作数</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,2</span><br><span class="line">mov ebx ,5</span><br><span class="line">mul ebx</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><hr><h3 id="除法【待解决疑问】"><a href="#除法【待解决疑问】" class="headerlink" title="除法【待解决疑问】"></a>除法【待解决疑问】</h3><p>无符号位除法指令：DIV</p><p>格式：DIV OPDR</p><p>有符号位除法指令：IDIV</p><p>格式：IDIV OPDR</p><p>功能：实现两个带符号数的二进制除法运算</p><blockquote><p>16bit的被除数，商放在AL，余数放在AH</p><p>32bit的被除数，商放在AX，余数放在DX</p><p>64bit的被除数，商放在EAX，余数放在EDX</p><p>128bit的被除数，商放在RAX，余数放在RDX</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov ax,1000</span><br><span class="line">mov bl,50</span><br><span class="line">div bl</span><br><span class="line">mov ah,ah</span><br><span class="line">mov al,al</span><br><span class="line">mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><blockquote><p>出现的问题：</p><ol><li>vs2015里面不能看到变量的变化</li></ol></blockquote><hr><h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><p>+1指令：INC</p><p>格式：INC OPDR</p><p>功能：OPDR = OPDE +1</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><hr><h3 id="自减"><a href="#自减" class="headerlink" title="自减"></a>自减</h3><p>-1指令：DEC</p><p>格式：DEC OPDR</p><p>功能：OPDR = OPDE -1</p><h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><h3 id="与"><a href="#与" class="headerlink" title="与"></a>与</h3><p>指令：AND</p><p>格式：AND OPDR1，OPDR2</p><p>影响标志位PF、SF、ZF，使CF = 0 ，OF= 0</p><p>主要用于修改操作数或置某些位为零</p><hr><h3 id="或"><a href="#或" class="headerlink" title="或"></a>或</h3><p>指令：OR</p><p>格式：OR OPDR1，OPDR2</p><hr><h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>指令：XOR</p><p>格式：XOR OPDR1，OPDR2</p><hr><h3 id="非"><a href="#非" class="headerlink" title="非"></a>非</h3><p>指令：NOT</p><p>格式：NOT exp</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础03：数学运算-amp-逻辑运算&quot;&gt;&lt;a href=&quot;#汇编基础03：数学运算-amp-逻辑运算&quot; class=&quot;headerlink&quot; title=&quot;汇编基础03：数学运算&amp;amp;逻辑运算&quot;&gt;&lt;/a&gt;汇编基础03：数学运算&amp;amp;逻辑运算&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础02：第一个程序</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/</id>
+    <published>2020-04-04T11:27:19.000Z</published>
+    <updated>2020-04-04T13:33:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础02：第一个程序"><a href="#汇编基础02：第一个程序" class="headerlink" title="汇编基础02：第一个程序"></a>汇编基础02：第一个程序</h1><h2 id="Visual-Studio-2015-使用："><a href="#Visual-Studio-2015-使用：" class="headerlink" title="Visual Studio 2015 使用："></a>Visual Studio 2015 使用：</h2><p>创建汇编项目：</p><ul><li>新建项目</li><li>模板 ， Visual C++ ， Win32， 控制台程序 </li><li>名称随便起，确定</li><li>选中项目右键“生成自定义”，选择MASM生成规则</li><li>右击右边的资源管理器中的源文件，添加，新建项，新建一个.asm后缀的新文件</li><li>选中项目右键–属性–链接器–系统–子系统选&lt;控制台(SUBSYSTEM:CONSOLE)&gt;</li><li>选中项目右键–属性–链接器–高级–入口点–填写 “main”</li><li>写代码运行即可</li></ul><p>调试汇编程序：</p><ul><li>右击项目名称，选择重新生成，然后点上面工作栏的本地Windows调试器即可</li><li>可进行断点执行</li><li>通过<code>调试</code>的<code>窗口</code>中可将寄存器显示调出来</li></ul><hr><h2 id="第一个程序："><a href="#第一个程序：" class="headerlink" title="第一个程序："></a>第一个程序：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">;指定指令集，工作在386版本的都行</span><br><span class="line"></span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">;使用的内存模式：flat（win32使用的内存模式）</span><br><span class="line">;函数调用约定：stdcall（用于win32 API）</span><br><span class="line"></span><br><span class="line">includelib user32.lib</span><br><span class="line">includelib kernel32.lib</span><br><span class="line">;导入库</span><br><span class="line"></span><br><span class="line">ExitProcess PROTO, dwExitCode : DWORD</span><br><span class="line">MessageBoxA PROTO hWnd : DWORD, lpText : BYTE , lpCaption : BYTE, uType : DWORD</span><br><span class="line">;声明的win32API的原型</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">Number DWORD 0</span><br><span class="line">text db &quot;hello world&quot;,0</span><br><span class="line">;数据段，声明多大整多大</span><br><span class="line">;定义数据，可读可写，程序直接放在内存里</span><br><span class="line">;.data?：不会占用exe的大小，是程序运行的时候申请的</span><br><span class="line">;.const：常量，可读不可写</span><br><span class="line"></span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">;函数体，可以加参数</span><br><span class="line">mov eax ,5</span><br><span class="line">mov ebx ,6</span><br><span class="line">add eax ,ebx</span><br><span class="line">add eax ,Number</span><br><span class="line">push 0</span><br><span class="line">push offset text</span><br><span class="line">push offset text</span><br><span class="line">push 0</span><br><span class="line">call MessageBoxA</span><br><span class="line">sub esp ,16</span><br><span class="line">call ExitProcess</span><br><span class="line">main ENDP</span><br><span class="line">;结束函数</span><br><span class="line">END main</span><br><span class="line">;结束程序流程</span><br><span class="line"></span><br><span class="line">;代码段，所有指令都要写在代码段中</span><br><span class="line">;数据段不可执行，代码段可执行</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础02：第一个程序&quot;&gt;&lt;a href=&quot;#汇编基础02：第一个程序&quot; class=&quot;headerlink&quot; title=&quot;汇编基础02：第一个程序&quot;&gt;&lt;/a&gt;汇编基础02：第一个程序&lt;/h1&gt;&lt;h2 id=&quot;Visual-Studio-2015-使用：&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用工具备忘录</title>
+    <link href="http://kn0sky.com/wiki/%E5%A4%87%E5%BF%98%E5%BD%95/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"/>
+    <id>http://kn0sky.com/wiki/%E5%A4%87%E5%BF%98%E5%BD%95/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/</id>
+    <published>2020-04-04T03:21:13.000Z</published>
+    <updated>2020-04-04T03:14:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常用工具备忘录"><a href="#常用工具备忘录" class="headerlink" title="常用工具备忘录"></a>常用工具备忘录</h2><h3 id="编程类"><a href="#编程类" class="headerlink" title="编程类"></a>编程类</h3><h4 id="Visual-Studio-2015"><a href="#Visual-Studio-2015" class="headerlink" title="Visual Studio 2015"></a>Visual Studio 2015</h4><p>适用平台：Windows</p><p>下载地址：<a href="https://msdn.itellyou.cn/" target="_blank" rel="external nofollow noopener noreferrer">https://msdn.itellyou.cn/</a></p><p>选择功能：在默认配置的基础上，</p><ul><li>勾选<code>编程语言中 的 Visual C++</code>和<code>针对 Visual Studio 的 Python 工具</code></li><li>勾选<code>通用Windows应用开发工具</code></li></ul><hr><h3 id="做图类："><a href="#做图类：" class="headerlink" title="做图类："></a>做图类：</h3><h4 id="ProcessOn"><a href="#ProcessOn" class="headerlink" title="ProcessOn"></a>ProcessOn</h4><p>适用平台：全平台</p><p>Web在线工具：<a href="https://www.processon.com/" target="_blank" rel="external nofollow noopener noreferrer">https://www.processon.com/</a></p><hr><h3 id="高效办公类："><a href="#高效办公类：" class="headerlink" title="高效办公类："></a>高效办公类：</h3><h4 id="Spackdesk"><a href="#Spackdesk" class="headerlink" title="Spackdesk"></a>Spackdesk</h4><p>适用平台：Windows，macOS</p><p>官网：<a href="https://spacedesk.net/" target="_blank" rel="external nofollow noopener noreferrer">https://spacedesk.net/</a></p><p>简介：Windows下的软件扩展桌面解决方案</p><h4 id="Microsoft-To-Do"><a href="#Microsoft-To-Do" class="headerlink" title="Microsoft To Do"></a>Microsoft To Do</h4><p>适用平台：Windows，Android</p><p>下载地址：Microsoft应用商店</p><p>简介：挺好用的清单软件</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常用工具备忘录&quot;&gt;&lt;a href=&quot;#常用工具备忘录&quot; class=&quot;headerlink&quot; title=&quot;常用工具备忘录&quot;&gt;&lt;/a&gt;常用工具备忘录&lt;/h2&gt;&lt;h3 id=&quot;编程类&quot;&gt;&lt;a href=&quot;#编程类&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+      <category term="备忘录" scheme="http://kn0sky.com/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>内存</title>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/</id>
+    <published>2020-04-02T12:27:19.000Z</published>
+    <updated>2020-04-04T03:17:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存</p><h3 id="内存的寻址范围"><a href="#内存的寻址范围" class="headerlink" title="内存的寻址范围"></a>内存的寻址范围</h3><p>32位系统内存的寻址范围是0x00000000-0xFFFFFFFF</p><p>最大寻址范围：0xFFFFFFFF+1(4294967296)</p><blockquote><p>1 Byte = 8 bit</p><p>1 KB = 1024 Byte</p><p>1 MB = 1024 KB</p><p>1 GB = 1024 MB</p></blockquote><p>4294967296 Byte = 4 GB （32位系统最大内存是4 GB） </p><p>64位系统内存寻址范围：0x0000000000000000 – 0xFFFFFFFFFFFFFFFF</p><h3 id="内存和寄存器的区别"><a href="#内存和寄存器的区别" class="headerlink" title="内存和寄存器的区别"></a>内存和寄存器的区别</h3><p>内存：数量庞大，便宜，速度较慢</p><p>寄存器：数量少，昂贵，速度极快，位于CPU内部</p><h3 id="内存的5种表现形式"><a href="#内存的5种表现形式" class="headerlink" title="内存的5种表现形式"></a>内存的5种表现形式</h3><p>立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,DWORD PTR DS:0x????????]</span><br></pre></td></tr></table></figure><p>把后面这个内存给EAX</p><hr><p>寄存器：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX]</span><br></pre></td></tr></table></figure><hr><p>寄存器+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX + 4]</span><br></pre></td></tr></table></figure><hr><p>比例因子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[REG + REG * &#123;1,2,4,8&#125;]</span><br></pre></td></tr></table></figure><hr><p>数组元素地址 = 数组首地址 + 元素索引 * 数组元素占用空间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX ,0x????????</span><br><span class="line">MOV EBX ,0x2</span><br><span class="line">MOV ECX ,DWORD PTR DS:[EAX+EBX*4]</span><br></pre></td></tr></table></figure><hr><p>比例因子+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,0x????????</span><br><span class="line">MOV EBX,0x2</span><br><span class="line">MOV ECX,DWORDPTRDS:[EAX + EBX*4 +1]</span><br></pre></td></tr></table></figure><h2 id="数据存储模式"><a href="#数据存储模式" class="headerlink" title="数据存储模式"></a>数据存储模式</h2><p>大端序：数据高位在内存低位，数据低位在内存高位，常用于ARM架构</p><p>小端序：数据高位在内存高位，数据低位在内存低位，常用于x86、AMD64架构</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;内存&quot;&gt;&lt;a href=&quot;#内存&quot; class=&quot;headerlink&quot; title=&quot;内存&quot;&gt;&lt;/a&gt;内存&lt;/h2&gt;&lt;p&gt;冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存&lt;/p&gt;
+&lt;h3 id=&quot;内存的寻
+      
+    
+    </summary>
+    
+    
+      <category term="计算机使用基础概念" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>寄存器逻辑结构</title>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/</id>
+    <published>2020-03-31T05:21:13.000Z</published>
+    <updated>2020-03-31T05:51:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="寄存器逻辑结构"><a href="#寄存器逻辑结构" class="headerlink" title="寄存器逻辑结构"></a>寄存器逻辑结构</h1><p>EAX：累加器，操作数和结果数据累加器，返回值运算结果一般都存在这里</p><blockquote><p>64:<code>RAX</code></p><p>32:<code>EAX</code></p><p>16:<code>AX</code></p><p>8:<code>AH+AL</code></p></blockquote><hr><p>EBX：基地址，DS段的数据指针，在内存寻址的时候存放基地址</p><blockquote><p>64:<code>RBX</code></p><p>32:<code>EBX</code></p><p>16:<code>BX</code></p><p>8:<code>BH+BL</code></p></blockquote><hr><p>ECX：计数器，字符串和循环操作的计数器</p><blockquote><p>64:<code>RCX</code></p><p>32:<code>ECX</code></p><p>16:<code>CX</code></p><p>8:<code>CH+CL</code></p></blockquote><hr><p>EDX：存储部分乘法结果和部分除法被除数</p><blockquote><p>64:<code>RDX</code></p><p>32:<code>EDX</code></p><p>16:<code>DX</code></p><p>8:<code>DH+DL</code></p></blockquote><hr><p>EBP：基址指针，SS段的数据指针</p><blockquote><p>64:<code>RBP</code></p><p>32:<code>EBP</code></p><p>16:<code>BP</code></p></blockquote><hr><p>ESP：栈帧指针，指向栈顶，也叫栈顶指针</p><blockquote><p>64:<code>RSP</code></p><p>32:<code>ESP</code></p><p>16:<code>SP</code></p></blockquote><hr><p>EDI：字符串操作的目标指针，ES段的数据指针</p><blockquote><p>64:<code>RDI</code></p><p>32:<code>EDI</code></p><p>16:<code>DI</code></p></blockquote><hr><p>ESI：字符串操作的原始指针，SS段的数据指针</p><blockquote><p>64:<code>RSI</code></p><p>32:<code>ESI</code></p><p>16:<code>SI</code></p></blockquote><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;寄存器逻辑结构&quot;&gt;&lt;a href=&quot;#寄存器逻辑结构&quot; class=&quot;headerlink&quot; title=&quot;寄存器逻辑结构&quot;&gt;&lt;/a&gt;寄存器逻辑结构&lt;/h1&gt;&lt;p&gt;EAX：累加器，操作数和结果数据累加器，返回值运算结果一般都存在这里&lt;/p&gt;
+&lt;blockquote
+      
+    
+    </summary>
+    
+    
+      <category term="计算机使用基础概念" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础01：基础概念</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</id>
+    <published>2020-03-30T06:27:19.000Z</published>
+    <updated>2020-04-07T10:32:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础01：基础概念"><a href="#汇编基础01：基础概念" class="headerlink" title="汇编基础01：基础概念"></a>汇编基础01：基础概念</h1><h2 id="16-32-64位汇编的区别"><a href="#16-32-64位汇编的区别" class="headerlink" title="16/32/64位汇编的区别"></a>16/32/64位汇编的区别</h2><ul><li>16位汇编：实模式，16位处理器内部，最多处理存储长度为16位</li><li>32位汇编：保护模式，32位处理器内部，最多处理存储长度为32位</li><li>64位汇编：保护模式，64位处理器内部，最多处理存储长度为64位</li></ul><blockquote><p>16位处理器只能运行16位汇编，</p><p>64位处理器可以运行64和32位汇编，</p><p>32位处理器不能运行16位汇编，</p><p>因为模式不一样</p></blockquote><h2 id="基本执行环境"><a href="#基本执行环境" class="headerlink" title="基本执行环境"></a>基本执行环境</h2><p>32位：</p><ul><li><p>8个32位通用寄存器</p></li><li><p>标志寄存器：EFLAGS</p></li><li><p>指令指针寄存器：EIP（记录下一条执行的地址）</p></li></ul><p>64位：</p><ul><li><p>8个64位通用寄存器</p></li><li><p>标志寄存器：RFLAGS</p></li><li><p>指令指针寄存器：RIP（记录下一条执行的地址）</p></li></ul><h3 id="EFLAGS-寄存器"><a href="#EFLAGS-寄存器" class="headerlink" title="EFLAGS 寄存器"></a>EFLAGS 寄存器</h3><p>包含了独立的二进制位，用于控制CPU操作，或反应CPU执行的结果</p><p><img src="%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%5CEFLAGS.png" alt></p><p><img src="EFLAGS.png" alt></p><h3 id="MMX-寄存器"><a href="#MMX-寄存器" class="headerlink" title="MMX 寄存器"></a>MMX 寄存器</h3><p>MMX 寄存器实际上是浮点单元中使用的同样寄存器的别名</p><h3 id="XMM-寄存器"><a href="#XMM-寄存器" class="headerlink" title="XMM 寄存器"></a>XMM 寄存器</h3><p>SIMD的扩展指令集</p><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul><li><p>Ollydbg</p></li><li><p>Visual Studio 2015</p><blockquote><ol><li>新建空项目</li><li>选中项目右键“生成自定义”，选择MASM生成规则</li><li>新建一个.asm后缀的新文件</li><li>选中项目右键–属性–链接器–系统–子系统选&lt;控制台(SUBSYSTEM:CONSOLE)&gt;</li><li>选中项目右键–属性–链接器–高级–入口点–填写 “main”</li></ol></blockquote></li></ul><h2 id="寄存器逻辑结构"><a href="#寄存器逻辑结构" class="headerlink" title="寄存器逻辑结构"></a>寄存器逻辑结构</h2><p>EAX：累加器，操作数和结果数据累加器，返回值运算结果一般都存在这里</p><blockquote><p>64:<code>RAX</code></p><p>32:<code>EAX</code></p><p>16:<code>AX</code></p><p>8:<code>AH+AL</code></p></blockquote><p>EBX：基地址，DS段的数据指针，在内存寻址的时候存放基地址</p><blockquote><p>64:<code>RBX</code></p><p>32:<code>EBX</code></p><p>16:<code>BX</code></p><p>8:<code>BH+BL</code></p></blockquote><p>ECX：计数器，字符串和循环操作的计数器</p><blockquote><p>64:<code>RCX</code></p><p>32:<code>ECX</code></p><p>16:<code>CX</code></p><p>8:<code>CH+CL</code></p></blockquote><p>EDX：存储部分乘法结果和部分除法被除数</p><blockquote><p>64:<code>RDX</code></p><p>32:<code>EDX</code></p><p>16:<code>DX</code></p><p>8:<code>DH+DL</code></p></blockquote><p>EBP：基址指针，SS段的数据指针</p><blockquote><p>64:<code>RBP</code></p><p>32:<code>EBP</code></p><p>16:<code>BP</code></p></blockquote><p>ESP：栈帧指针，指向栈顶，也叫栈顶指针</p><blockquote><p>64:<code>RSP</code></p><p>32:<code>ESP</code></p><p>16:<code>SP</code></p></blockquote><p>EDI：字符串操作的目标指针，ES段的数据指针</p><blockquote><p>64:<code>RDI</code></p><p>32:<code>EDI</code></p><p>16:<code>DI</code></p></blockquote><p>ESI：字符串操作的原始指针，SS段的数据指针</p><blockquote><p>64:<code>RSI</code></p><p>32:<code>ESI</code></p><p>16:<code>SI</code></p></blockquote><h2 id="冯·诺依曼体系结构"><a href="#冯·诺依曼体系结构" class="headerlink" title="冯·诺依曼体系结构"></a>冯·诺依曼体系结构</h2><p>分为5个部分</p><p>输入设备–存储器–输出设备，运算器–控制器</p><h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存</p><h3 id="内存的寻址范围"><a href="#内存的寻址范围" class="headerlink" title="内存的寻址范围"></a>内存的寻址范围</h3><p>32位系统内存的寻址范围是0x00000000-0xFFFFFFFF</p><p>最大寻址范围：0xFFFFFFFF+1(4294967296)</p><blockquote><p>1 Byte = 8 bit</p><p>1 KB = 1024 Byte</p><p>1 MB = 1024 KB</p><p>1 GB = 1024 MB</p></blockquote><p>4294967296 Byte = 4 GB （32位系统最大内存是4 GB） </p><p>64位系统内存寻址范围：0x0000000000000000 – 0xFFFFFFFFFFFFFFFF</p><h3 id="内存和寄存器的区别"><a href="#内存和寄存器的区别" class="headerlink" title="内存和寄存器的区别"></a>内存和寄存器的区别</h3><p>内存：数量庞大，便宜，速度较慢</p><p>寄存器：数量少，昂贵，速度极快，位于CPU内部</p><h3 id="内存的5种表现形式"><a href="#内存的5种表现形式" class="headerlink" title="内存的5种表现形式"></a>内存的5种表现形式</h3><p>立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,DWORD PTR DS:0x????????]</span><br></pre></td></tr></table></figure><p>把后面这个内存给EAX</p><hr><p>寄存器：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX]</span><br></pre></td></tr></table></figure><hr><p>寄存器+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX + 4]</span><br></pre></td></tr></table></figure><hr><p>比例因子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[REG + REG * &#123;1,2,4,8&#125;]</span><br></pre></td></tr></table></figure><hr><p>数组元素地址 = 数组首地址 + 元素索引 * 数组元素占用空间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX ,0x????????</span><br><span class="line">MOV EBX ,0x2</span><br><span class="line">MOV ECX ,DWORD PTR DS:[EAX+EBX*4]</span><br></pre></td></tr></table></figure><hr><p>比例因子+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,0x????????</span><br><span class="line">MOV EBX,0x2</span><br><span class="line">MOV ECX,DWORDPTRDS:[EAX + EBX*4 +1]</span><br></pre></td></tr></table></figure><h2 id="数据存储模式"><a href="#数据存储模式" class="headerlink" title="数据存储模式"></a>数据存储模式</h2><p>大端序：数据高位在内存低位，数据低位在内存高位，常用于ARM架构</p><p>小端序：数据高位在内存高位，数据低位在内存低位，常用于x86、AMD64架构</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://blog.csdn.net/astrotycoon/article/details/76241443" target="_blank" rel="external nofollow noopener noreferrer">EFLAGS寄存器中状态标志（Status Flags）小结</a></li><li><a href="https://blog.csdn.net/jn1158359135/article/details/7761011" target="_blank" rel="external nofollow noopener noreferrer">x86—EFLAGS寄存器详解</a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础01：基础概念&quot;&gt;&lt;a href=&quot;#汇编基础01：基础概念&quot; class=&quot;headerlink&quot; title=&quot;汇编基础01：基础概念&quot;&gt;&lt;/a&gt;汇编基础01：基础概念&lt;/h1&gt;&lt;h2 id=&quot;16-32-64位汇编的区别&quot;&gt;&lt;a href=&quot;#16-
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
     <title>借助云服务器实现hexo全自动部署</title>
-    <link href="http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
-    <id>http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</id>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</id>
     <published>2020-03-15T14:36:10.000Z</published>
     <updated>2020-03-17T03:59:17.000Z</updated>
     
@@ -59,38 +345,17 @@
     </summary>
     
     
-      <category term="博客篇" scheme="http://kn0sky.com/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/"/>
+      <category term="计算机使用入门" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>主页</title>
-    <link href="http://kn0sky.com/wiki/index/"/>
-    <id>http://kn0sky.com/wiki/index/</id>
-    <published>2020-03-14T07:02:32.000Z</published>
-    <updated>2020-03-17T04:08:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>整理个人知识库初尝试，之后会逐步完善个人知识体系，从0到1，一点一点进步成长</p><h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><p><strong>博客篇</strong></p><ul><li><input checked disabled type="checkbox"> 《借助云服务器实现hexo全自动部署》</li><li><input checked disabled type="checkbox"> 《使用hexo搭建个人wiki》</li></ul><p><strong>计算机基础操作篇</strong></p><ul><li><input disabled type="checkbox"> 整理之前博客里的文章</li></ul><hr><p><strong>个人微信订阅号：我可是会飞的啊</strong></p><p>喜欢本站可以关注一下获取最新更新消息</p><p><img src="wechat.jpg" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;整理个人知识库初尝试，之后会逐步完善个人知识体系，从0到1，一点一点进步成长&lt;/p&gt;
-&lt;h2 id=&quot;Todo&quot;&gt;&lt;a href=&quot;#Todo&quot; class=&quot;headerlink&quot; title=&quot;Todo&quot;&gt;&lt;/a&gt;Todo&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;博客篇&lt;/str
-      
-    
-    </summary>
-    
+      <category term="博客搭建" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
   </entry>
   
   <entry>
     <title>Windows系统下进行屏幕扩展</title>
-    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
-    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/</id>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/</id>
     <published>2020-03-13T10:38:51.000Z</published>
     <updated>2020-03-13T10:27:45.000Z</updated>
     
@@ -106,19 +371,19 @@
     </summary>
     
     
-      <category term="计算机基础操作篇" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/"/>
+      <category term="计算机使用入门" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/"/>
     
-      <category term="Windows系统下" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/"/>
+      <category term="Windows系统下" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/"/>
     
-      <category term="屏幕扩展" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E7%AF%87/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
+      <category term="屏幕扩展" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
     
     
   </entry>
   
   <entry>
     <title>使用hexo搭建个人wiki</title>
-    <link href="http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/"/>
-    <id>http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/</id>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/</id>
     <published>2020-03-12T11:38:51.000Z</published>
     <updated>2020-03-16T08:55:58.000Z</updated>
     
@@ -134,24 +399,9 @@
     </summary>
     
     
-      <category term="博客篇" scheme="http://kn0sky.com/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/"/>
+      <category term="计算机使用入门" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/Untitled/"/>
-    <id>http://kn0sky.com/wiki/%E5%8D%9A%E5%AE%A2%E7%AF%87/Untitled/</id>
-    <published>1970-01-01T00:00:00.000Z</published>
-    <updated>2020-03-17T04:04:01.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="博客篇" scheme="http://kn0sky.com/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/"/>
+      <category term="博客搭建" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
   </entry>
