@@ -12,22 +12,22 @@
     <meta name="description" content="借助云服务器实现hexo全自动部署大家好，我是kn0sky，上一篇我们用hexo搭建了wiki主题个人博客，这次我们来讲讲部署hexo文章我们可以如何偷懒。不想直接把站点文件都传到github上，那自己发布hexo文章需要依次执行3条命令，懒惰的我觉得太麻烦了，于是简单写了个脚本将三条hexo命令简化成一条执行脚本命令，但发布文章还是要执行一条命令啊，还是太麻烦了，后来就在想啊，能不能一条命令也不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="借助云服务器实现hexo全自动部署">
-<meta property="og:url" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:url" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="kn0sky&#39;wiki">
 <meta property="og:description" content="借助云服务器实现hexo全自动部署大家好，我是kn0sky，上一篇我们用hexo搭建了wiki主题个人博客，这次我们来讲讲部署hexo文章我们可以如何偷懒。不想直接把站点文件都传到github上，那自己发布hexo文章需要依次执行3条命令，懒惰的我觉得太麻烦了，于是简单写了个脚本将三条hexo命令简化成一条执行脚本命令，但发布文章还是要执行一条命令啊，还是太麻烦了，后来就在想啊，能不能一条命令也不">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
-<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
 <meta property="og:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/2.png">
-<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/2.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/2.png">
 <meta property="og:image" content="http://kn0sky.com/home/kn0sky/hexo-wiki/source/_posts/%E5%8D%9A%E5%AE%A2%E7%AF%87/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/3.png">
-<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/3.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/3.png">
 <meta property="article:published_time" content="2020-03-15T14:36:10.000Z">
 <meta property="article:modified_time" content="2020-04-14T10:13:53.000Z">
 <meta property="article:author" content="kn0sky">
 <meta property="article:tag" content="kn0sky">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/1.jpg">
     
 
     
@@ -235,7 +235,7 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
-                            计算机使用入门
+                            计算机使用入门学习
                         </a>
                          <ul class="unstyled" id="tree"> 
                     <li class="directory">
@@ -251,7 +251,7 @@
                             &nbsp;
                             屏幕扩展
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/">Windows系统下进行屏幕扩展</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/">Windows系统下进行屏幕扩展</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -262,7 +262,7 @@
                             &nbsp;
                             博客搭建
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/">使用hexo搭建个人wiki</a></li>  <li class="file active"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">借助云服务器实现hexo全自动部署</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/">使用hexo搭建个人wiki</a></li>  <li class="file active"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">借助云服务器实现hexo全自动部署</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -346,7 +346,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-计算机使用入门/博客搭建/借助云服务器实现hexo全自动部署" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-计算机使用入门学习/博客搭建/借助云服务器实现hexo全自动部署" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -356,14 +356,14 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/">计算机使用入门</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+        <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/">计算机使用入门学习</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
     </div>
 
                         
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
+        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
             <time datetime="2020-03-15T14:36:10.000Z" itemprop="datePublished">2020-03-15</time>
         </a>
     </div>
@@ -544,7 +544,7 @@
         </a>
     
     
-        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
             <div class="article-nav-title">Windows系统下进行屏幕扩展</div>
         </a>
