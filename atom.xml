@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-04-14T09:41:03.000Z</updated>
+  <updated>2020-04-17T07:12:53.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用电脑控制手机</title>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6%E6%89%8B%E6%9C%BA/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6%E6%89%8B%E6%9C%BA/</id>
+    <published>2020-04-17T07:38:51.000Z</published>
+    <updated>2020-04-17T07:12:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用电脑控制-Android-手机"><a href="#使用电脑控制-Android-手机" class="headerlink" title="使用电脑控制 Android 手机"></a>使用电脑控制 Android 手机</h2><h3 id="scrcpy（适用Windows、Linux、MacOS）"><a href="#scrcpy（适用Windows、Linux、MacOS）" class="headerlink" title="scrcpy（适用Windows、Linux、MacOS）"></a>scrcpy（适用Windows、Linux、MacOS）</h3><p><strong>scrcpy</strong> 是免费开源的投屏软件，支持将安卓手机屏幕投放在 Windows、macOS、GNU/Linux 上，并可直接借助鼠标在投屏窗口中进行交互和录制。</p><p>项目地址：<a href="https://github.com/Genymobile/scrcpy" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Genymobile/scrcpy</a></p><p>Windows软件下载：<a href="https://github.com/Genymobile/scrcpy/releases/download/v1.12.1/scrcpy-win64-v1.12.1.zip" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Genymobile/scrcpy/releases/download/v1.12.1/scrcpy-win64-v1.12.1.zip</a></p><h4 id="Windows-下-有线连接"><a href="#Windows-下-有线连接" class="headerlink" title="Windows 下 有线连接"></a>Windows 下 有线连接</h4><ol><li>手机开启<code>开发者模式</code></li><li>手机开启<code>USB调试模式</code></li><li>手机和电脑通过数据线连接</li><li>双击软件中的<code>scrcpy.exe</code></li></ol><p>即可完成有线连接下的电脑控制手机（手机投屏电脑）</p><h4 id="Windows-下-无线连接"><a href="#Windows-下-无线连接" class="headerlink" title="Windows 下 无线连接"></a>Windows 下 无线连接</h4><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://zhuanlan.zhihu.com/p/80264357" target="_blank" rel="external nofollow noopener noreferrer">scrcpy - 手机无线投屏到电脑</a></li><li><a href></a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;使用电脑控制-Android-手机&quot;&gt;&lt;a href=&quot;#使用电脑控制-Android-手机&quot; class=&quot;headerlink&quot; title=&quot;使用电脑控制 Android 手机&quot;&gt;&lt;/a&gt;使用电脑控制 Android 手机&lt;/h2&gt;&lt;h3 id=&quot;scrcp
+      
+    
+    </summary>
+    
+    
+      <category term="计算机使用入门学习" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="手机连接电脑" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>test</title>
@@ -379,19 +405,19 @@
   </entry>
   
   <entry>
-    <title>Windows系统下进行屏幕扩展</title>
-    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
-    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/Windows%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/</id>
+    <title>使用手机扩展电脑屏幕</title>
+    <link href="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E6%89%A9%E5%B1%95%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95/"/>
+    <id>http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E6%89%A9%E5%B1%95%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95/</id>
     <published>2020-03-13T10:38:51.000Z</published>
-    <updated>2020-03-13T10:27:45.000Z</updated>
+    <updated>2020-04-17T06:56:07.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Windows系统下进行屏幕扩展"><a href="#Windows系统下进行屏幕扩展" class="headerlink" title="Windows系统下进行屏幕扩展"></a>Windows系统下进行屏幕扩展</h2><p>多屏幕协同工作可以有效提高工作效率，在一定程度上摆脱窗口反复切换的问题，下面将分别介绍常规和非常规的解决方案。</p><h2 id="常规解决方案"><a href="#常规解决方案" class="headerlink" title="常规解决方案"></a>常规解决方案</h2><p>最常规的方法是整一个显示设备（显示器、投影仪等），HDMI线缆连接，然后显示设置里选择扩展屏幕（也有复制选项）</p><h2 id="非常规解决方案"><a href="#非常规解决方案" class="headerlink" title="非常规解决方案"></a>非常规解决方案</h2><h3 id="通过局域网使用手机-平板-其他Windows电脑进行屏幕扩展"><a href="#通过局域网使用手机-平板-其他Windows电脑进行屏幕扩展" class="headerlink" title="通过局域网使用手机/平板/其他Windows电脑进行屏幕扩展"></a>通过局域网使用手机/平板/其他Windows电脑进行屏幕扩展</h3><p>这里需要通过<code>spacedesk</code>软件实现，下载地址参考：<a href="https://spacedesk.net/" target="_blank" rel="external nofollow noopener noreferrer">spacedesk官网</a></p><p>软件分为主机端和扩展端，主机端只能是Windows系统，扩展端可以是Android、Windows、iOS等</p><p>软件的安装较为无脑，直接点下一步即可，这里不多啰嗦，Android端apk打不开Google Play商店可通过其他下载站进行下载，例如<a href="https://freeapk.mobi/spacedesk/" target="_blank" rel="external nofollow noopener noreferrer">Freeapk</a></p><p>软件安装完之后，主机和用于扩展屏幕的设备需处于同一局域网下，主机端打开软件，扩展端也打开软件，扩展端会直接在局域网内搜索主机，然后选中要使用扩展的主机即可</p><p>PS： Windows系统查看 IP 地址可通过 cmd 命令进行查询：</p><ol><li>快捷键<code>Windows + R</code>打开<code>运行</code></li><li>输入 cmd 敲击回车，弹出黑框框</li><li>输入<code>ipconfig</code>命令敲击回车，即可查询当前IP</li></ol><p><strong>注意：如果手机和电脑分辨率不一样会导致扩展屏的使用体验很糟糕！</strong></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Windows-下-使用手机-进行-屏幕扩展"><a href="#Windows-下-使用手机-进行-屏幕扩展" class="headerlink" title="Windows 下 使用手机 进行 屏幕扩展"></a>Windows 下 使用手机 进行 屏幕扩展</h2><p>多屏幕协同工作可以有效提高工作效率，在一定程度上摆脱窗口反复切换的问题，下面将分别介绍常规和非常规的解决方案。</p><h2 id="常规解决方案"><a href="#常规解决方案" class="headerlink" title="常规解决方案"></a>常规解决方案</h2><p>最常规的方法是整一个显示设备（显示器、投影仪等），HDMI线缆连接，然后显示设置里选择扩展屏幕（也有复制选项）</p><h2 id="非常规解决方案"><a href="#非常规解决方案" class="headerlink" title="非常规解决方案"></a>非常规解决方案</h2><h3 id="通过局域网使用手机-平板-其他Windows电脑进行屏幕扩展"><a href="#通过局域网使用手机-平板-其他Windows电脑进行屏幕扩展" class="headerlink" title="通过局域网使用手机/平板/其他Windows电脑进行屏幕扩展"></a>通过局域网使用手机/平板/其他Windows电脑进行屏幕扩展</h3><p>这里需要通过<code>spacedesk</code>软件实现，下载地址参考：<a href="https://spacedesk.net/" target="_blank" rel="external nofollow noopener noreferrer">spacedesk官网</a></p><p>软件分为主机端和扩展端，主机端只能是Windows系统，扩展端可以是Android、Windows、iOS等</p><p>软件的安装较为无脑，直接点下一步即可，这里不多啰嗦，Android端apk打不开Google Play商店可通过其他下载站进行下载，例如<a href="https://freeapk.mobi/spacedesk/" target="_blank" rel="external nofollow noopener noreferrer">Freeapk</a></p><p>软件安装完之后，主机和用于扩展屏幕的设备需处于同一局域网下，主机端打开软件，扩展端也打开软件，扩展端会直接在局域网内搜索主机，然后选中要使用扩展的主机即可</p><p>PS： Windows系统查看 IP 地址可通过 cmd 命令进行查询：</p><ol><li>快捷键<code>Windows + R</code>打开<code>运行</code></li><li>输入 cmd 敲击回车，弹出黑框框</li><li>输入<code>ipconfig</code>命令敲击回车，即可查询当前IP</li></ol><p><strong>注意：如果手机和电脑分辨率不一样会导致扩展屏的使用体验很糟糕！</strong></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;Windows系统下进行屏幕扩展&quot;&gt;&lt;a href=&quot;#Windows系统下进行屏幕扩展&quot; class=&quot;headerlink&quot; title=&quot;Windows系统下进行屏幕扩展&quot;&gt;&lt;/a&gt;Windows系统下进行屏幕扩展&lt;/h2&gt;&lt;p&gt;多屏幕协同工作可以有效提高工
+        &lt;h2 id=&quot;Windows-下-使用手机-进行-屏幕扩展&quot;&gt;&lt;a href=&quot;#Windows-下-使用手机-进行-屏幕扩展&quot; class=&quot;headerlink&quot; title=&quot;Windows 下 使用手机 进行 屏幕扩展&quot;&gt;&lt;/a&gt;Windows 下 使用手机 进行 屏幕
       
     
     </summary>
@@ -399,9 +425,7 @@
     
       <category term="计算机使用入门学习" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="Windows系统下" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/"/>
-    
-      <category term="屏幕扩展" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B/%E5%B1%8F%E5%B9%95%E6%89%A9%E5%B1%95/"/>
+      <category term="手机连接电脑" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/"/>
     
     
   </entry>
