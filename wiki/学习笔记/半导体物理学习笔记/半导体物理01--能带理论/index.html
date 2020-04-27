@@ -3,24 +3,27 @@
 <head>
     <meta charset="utf-8">
     
-    <title>汇编基础09--传送指令 | kn0sky&#39;wiki</title>
+    <title>半导体物理01--能带理论 | kn0sky&#39;wiki</title>
     
     
         <meta name="keywords" content="kn0sky">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="汇编基础09 – 传送指令指令：MOVS 格式：MOVS OPRD1,OPRD2 功能：把DS:SI指向的存储单元中的数据装入ES:DI指向的存储单元中，然后根据DF标志分别增减SI和DI 示例 1234567891011.586.MODEL flat,stdcall.codemain proc	mov edi ,esp	mov dword ptr ss:[esp],0;给edi清零	mov es">
+    <meta name="description" content="半导体物理01 – 能带理论认识半导体半导体的主要特征：电阻率可在很大范围内变化 半导体的分类：  元素半导体（单质，比如Si、Ge） 化合物半导体（比如：GaAs、InP） 固溶半导体（混合晶体） 非晶态半导体 有机半导体  半导体的晶格结构：  金刚石结构（共价键 | Si、Ge） 闪锌矿结构（混合键） 纤锌矿结构（混合键） NaCl结构（共价键）  能带理论原子中的电子状态–能级电子运动处于">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汇编基础09--传送指令">
-<meta property="og:url" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:title" content="半导体物理01--能带理论">
+<meta property="og:url" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="kn0sky&#39;wiki">
-<meta property="og:description" content="汇编基础09 – 传送指令指令：MOVS 格式：MOVS OPRD1,OPRD2 功能：把DS:SI指向的存储单元中的数据装入ES:DI指向的存储单元中，然后根据DF标志分别增减SI和DI 示例 1234567891011.586.MODEL flat,stdcall.codemain proc	mov edi ,esp	mov dword ptr ss:[esp],0;给edi清零	mov es">
+<meta property="og:description" content="半导体物理01 – 能带理论认识半导体半导体的主要特征：电阻率可在很大范围内变化 半导体的分类：  元素半导体（单质，比如Si、Ge） 化合物半导体（比如：GaAs、InP） 固溶半导体（混合晶体） 非晶态半导体 有机半导体  半导体的晶格结构：  金刚石结构（共价键 | Si、Ge） 闪锌矿结构（混合键） 纤锌矿结构（混合键） NaCl结构（共价键）  能带理论原子中的电子状态–能级电子运动处于">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-17T23:27:19.000Z">
-<meta property="article:modified_time" content="2020-04-18T06:26:35.000Z">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/1.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA%5C1.png">
+<meta property="article:published_time" content="2020-04-26T14:37:19.000Z">
+<meta property="article:modified_time" content="2020-04-27T08:12:05.000Z">
 <meta property="article:author" content="kn0sky">
 <meta property="article:tag" content="kn0sky">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/1.png">
     
 
     
@@ -213,22 +216,22 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A801--HTML&CSS%E5%9F%BA%E7%A1%80/">前端入门01--HTML和CSS基础</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
-                            &nbsp;
-                            半导体物理学习笔记
-                        </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/">半导体物理01--能带理论</a></li>  </ul> 
-                    </li> 
-                    
                     <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
+                            半导体物理学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/">半导体物理01--能带理论</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             汇编基础学习笔记
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">汇编基础01：基础概念</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">汇编基础02：第一个程序</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/">汇编基础03：数学运算&逻辑运算</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/">汇编基础04：循环</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/">汇编基础05：堆栈</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础06：数据传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/">汇编基础07：比较指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/">汇编基础08： JCC 转移指令</a></li>  <li class="file active"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础09--传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/">汇编作业--电话簿</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/">汇编基础10--使用函数</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/">汇编基础11--win32汇编</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/">汇编基础12--数组和结构体</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">汇编基础01：基础概念</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">汇编基础02：第一个程序</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/">汇编基础03：数学运算&逻辑运算</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/">汇编基础04：循环</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/">汇编基础05：堆栈</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础06：数据传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/">汇编基础07：比较指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/">汇编基础08： JCC 转移指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础09--传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/">汇编作业--电话簿</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/">汇编基础10--使用函数</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/">汇编基础11--win32汇编</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/">汇编基础12--数组和结构体</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -339,7 +342,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-学习笔记/汇编基础学习笔记/汇编基础09--传送指令" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-学习笔记/半导体物理学习笔记/半导体物理01--能带理论" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -349,15 +352,15 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">汇编基础学习笔记</a>
+        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">半导体物理学习笔记</a>
     </div>
 
                         
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">
-            <time datetime="2020-04-17T23:27:19.000Z" itemprop="datePublished">2020-04-18</time>
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/">
+            <time datetime="2020-04-26T14:37:19.000Z" itemprop="datePublished">2020-04-26</time>
         </a>
     </div>
 
@@ -372,7 +375,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            汇编基础09--传送指令
+            半导体物理01--能带理论
         </h1>
     
 
@@ -385,39 +388,75 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#汇编基础09-–-传送指令"><span class="toc-number">1.</span> <span class="toc-text">汇编基础09 – 传送指令</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#半导体物理01-–-能带理论"><span class="toc-number">1.</span> <span class="toc-text">半导体物理01 – 能带理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#认识半导体"><span class="toc-number">1.1.</span> <span class="toc-text">认识半导体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#能带理论"><span class="toc-number">1.2.</span> <span class="toc-text">能带理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原子中的电子状态–能级"><span class="toc-number">1.2.1.</span> <span class="toc-text">原子中的电子状态–能级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#电子在量子态上的分布"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">电子在量子态上的分布</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#晶体中的电子状态–能带"><span class="toc-number">1.2.2.</span> <span class="toc-text">晶体中的电子状态–能带</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对零度时（0K），半导体、绝缘体、金属的能带区别"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">绝对零度时（0K），半导体、绝缘体、金属的能带区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#半导体中电子的状态和能带"><span class="toc-number">1.3.</span> <span class="toc-text">半导体中电子的状态和能带</span></a></li></ol></li></ol>
                 </div>
             
         
         
-            <h1 id="汇编基础09-–-传送指令"><a href="#汇编基础09-–-传送指令" class="headerlink" title="汇编基础09 – 传送指令"></a>汇编基础09 – 传送指令</h1><p>指令：MOVS</p>
-<p>格式：MOVS OPRD1,OPRD2</p>
-<p>功能：把DS:SI指向的存储单元中的数据装入ES:DI指向的存储单元中，然后根据DF标志分别增减SI和DI</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat,stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">	mov edi ,esp</span><br><span class="line">	mov dword ptr ss:[esp],0;给edi清零</span><br><span class="line">	mov esi ,ebp</span><br><span class="line">	movs dword ptr es:[edi],dword ptr ds:[esi];把esi中的数据存储到edi中</span><br><span class="line">	mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>
-
+            <h1 id="半导体物理01-–-能带理论"><a href="#半导体物理01-–-能带理论" class="headerlink" title="半导体物理01 – 能带理论"></a>半导体物理01 – 能带理论</h1><h2 id="认识半导体"><a href="#认识半导体" class="headerlink" title="认识半导体"></a>认识半导体</h2><p>半导体的主要特征：电阻率可在很大范围内变化</p>
+<p>半导体的分类：</p>
+<ul>
+<li>元素半导体（单质，比如Si、Ge）</li>
+<li>化合物半导体（比如：GaAs、InP）</li>
+<li>固溶半导体（混合晶体）</li>
+<li>非晶态半导体</li>
+<li>有机半导体</li>
+</ul>
+<p>半导体的晶格结构：</p>
+<ul>
+<li>金刚石结构（共价键 | Si、Ge）</li>
+<li>闪锌矿结构（混合键）</li>
+<li>纤锌矿结构（混合键）</li>
+<li>NaCl结构（共价键）</li>
+</ul>
+<h2 id="能带理论"><a href="#能带理论" class="headerlink" title="能带理论"></a>能带理论</h2><h3 id="原子中的电子状态–能级"><a href="#原子中的电子状态–能级" class="headerlink" title="原子中的电子状态–能级"></a>原子中的电子状态–能级</h3><p>电子运动处于量子态，要完全描述电子的运动需要4个量子数（<strong>唯一确定</strong>）：</p>
+<ul>
+<li>主量子数n（主能级）：表征量子态具有的能量大小，n=1,2,3…</li>
+<li>角量子数l（次能级）：表征电子运动的角动量大小，  l=0,1,2,3…</li>
+<li>磁量子数m：决定轨道角动量在空间的方位，m=0,±1,±2…</li>
+<li>自旋量子数s：决定自旋角动量在空间的方位，s=±1/2</li>
+</ul>
 <blockquote>
-<p>寄存器存储的是内存地址，内存地址里存储的是数据</p>
+<p>主能级n的值决定有多少次能级l</p>
+<p>次能级轨道依次为<code>s p d f</code></p>
+<p>磁量子数m和次能级轨道数有关，后面的轨道比前面的轨道m多2</p>
+<p>自旋量子数说明电子有两种自旋方向</p>
 </blockquote>
-<p>指令：STOS</p>
-<p>格式：STOS OPRD</p>
-<p>功能：把AL/AX/EAX/RAX等中的数据存储到DI/EDI（这种为目的串的地址）中，每次执行后，会根据DF的值进行自动调整</p>
-<p>把AL或AX中的数据装入ES:DI指向的存储单元，然后根据DF标志增减DI</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat,stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">	mov eax,11223344</span><br><span class="line">	mov edi ,esp</span><br><span class="line">	stos dword ptr es:[edi]</span><br><span class="line">	mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>
-
+<p><strong>简并度</strong>：指量子态数（由对应能级的磁量子数决定）</p>
+<h4 id="电子在量子态上的分布"><a href="#电子在量子态上的分布" class="headerlink" title="电子在量子态上的分布"></a>电子在量子态上的分布</h4><p>电子填充量子态需遵从2个原则：</p>
+<ol>
+<li><strong>泡利不相容原理</strong>（计入自旋）：原子中每个量子态最多只能容纳一个电子</li>
+<li><strong>能量最低原理</strong>：原子中的电子，在不违背泡利不相容原理的前提下，总是先占据能量低的量子态</li>
+</ol>
+<h3 id="晶体中的电子状态–能带"><a href="#晶体中的电子状态–能带" class="headerlink" title="晶体中的电子状态–能带"></a>晶体中的电子状态–能带</h3><p>电子共有化运动：</p>
+<ol>
+<li>原子靠近组成晶体，越外层的层壳交叠越多</li>
+<li>电子不再局限于某一原子，可以转移到相邻原子上</li>
+<li>电子的转移只能在不同原子的相似壳层</li>
+</ol>
+<p>电子共有化运动 —&gt; 分裂出若干个相近的能级 —&gt; 形成一个<strong>准连续的能带</strong></p>
+<p>能带重组：</p>
+<p><img src="1.png" alt></p>
+<p> <img src="%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA%5C1.png" alt></p>
+<h4 id="绝对零度时（0K），半导体、绝缘体、金属的能带区别"><a href="#绝对零度时（0K），半导体、绝缘体、金属的能带区别" class="headerlink" title="绝对零度时（0K），半导体、绝缘体、金属的能带区别"></a>绝对零度时（0K），半导体、绝缘体、金属的能带区别</h4><p>半导体，绝缘体，金属能带的区别：</p>
+<ul>
+<li>绝缘体：导带是空带，价带是满带，禁带距离大</li>
+<li>半导体：导带是空带，价带是满带，禁带距离小</li>
+<li>金    属：导带是半满，价带是满带，禁带距离无</li>
+</ul>
 <blockquote>
-<p>将EAX的值放到目的地址中</p>
+<p>电子从价带跃迁到导带，使晶体拥有导电特性</p>
+<ul>
+<li><p>满带、空带：不导电</p>
+</li>
+<li><p>半满带：导电</p>
+</li>
+</ul>
 </blockquote>
-<p>指令：REP</p>
-<p>格式：REP</p>
-<p>功能：重复其后的字符串操作指令。重复前先判断CX是否为0，为0就结束重复，否则CX减1，重复其后的串操作指令。主要用在MOVS和STOS前。一般不用在LODS前。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat,stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">	mov ecx,4</span><br><span class="line">	mov edi ,esp</span><br><span class="line">	mov dword ptr ss:[esp],0;给edi清零</span><br><span class="line">	mov esi ,ebp</span><br><span class="line">	movs dword ptr es:[edi],dword ptr ds:[esi]</span><br><span class="line">	rep movsb</span><br><span class="line">	mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>将esi的4个位传送到edi，每重复一次，往后多传送一位</p>
-</blockquote>
+<p>绝缘体和半导体结构类似，在0K时不导电，</p>
+<p>在室温环境下，由于本征激发，半导体有一定的导电性（掺杂之后可以强导电）</p>
+<h2 id="半导体中电子的状态和能带"><a href="#半导体中电子的状态和能带" class="headerlink" title="半导体中电子的状态和能带"></a>半导体中电子的状态和能带</h2><p>单电子近似：晶体中的电子是在晶格的周期性势场（原子核与电子的平均势场）中运动的</p>
+<p>布洛赫定理：</p>
 
             </div>
         
@@ -430,19 +469,10 @@
     
 <nav id="article-nav">
     
-        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    汇编基础12--数组和结构体
-                
-            </div>
-        </a>
     
-    
-        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">汇编基础08： JCC 转移指令</div>
+            <div class="article-nav-title">汇编作业--电话簿</div>
         </a>
     
 </nav>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-04-18T07:49:14.000Z</updated>
+  <updated>2020-04-27T08:12:05.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>半导体物理01--能带理论</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/</id>
+    <published>2020-04-26T14:37:19.000Z</published>
+    <updated>2020-04-27T08:12:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="半导体物理01-–-能带理论"><a href="#半导体物理01-–-能带理论" class="headerlink" title="半导体物理01 – 能带理论"></a>半导体物理01 – 能带理论</h1><h2 id="认识半导体"><a href="#认识半导体" class="headerlink" title="认识半导体"></a>认识半导体</h2><p>半导体的主要特征：电阻率可在很大范围内变化</p><p>半导体的分类：</p><ul><li>元素半导体（单质，比如Si、Ge）</li><li>化合物半导体（比如：GaAs、InP）</li><li>固溶半导体（混合晶体）</li><li>非晶态半导体</li><li>有机半导体</li></ul><p>半导体的晶格结构：</p><ul><li>金刚石结构（共价键 | Si、Ge）</li><li>闪锌矿结构（混合键）</li><li>纤锌矿结构（混合键）</li><li>NaCl结构（共价键）</li></ul><h2 id="能带理论"><a href="#能带理论" class="headerlink" title="能带理论"></a>能带理论</h2><h3 id="原子中的电子状态–能级"><a href="#原子中的电子状态–能级" class="headerlink" title="原子中的电子状态–能级"></a>原子中的电子状态–能级</h3><p>电子运动处于量子态，要完全描述电子的运动需要4个量子数（<strong>唯一确定</strong>）：</p><ul><li>主量子数n（主能级）：表征量子态具有的能量大小，n=1,2,3…</li><li>角量子数l（次能级）：表征电子运动的角动量大小，  l=0,1,2,3…</li><li>磁量子数m：决定轨道角动量在空间的方位，m=0,±1,±2…</li><li>自旋量子数s：决定自旋角动量在空间的方位，s=±1/2</li></ul><blockquote><p>主能级n的值决定有多少次能级l</p><p>次能级轨道依次为<code>s p d f</code></p><p>磁量子数m和次能级轨道数有关，后面的轨道比前面的轨道m多2</p><p>自旋量子数说明电子有两种自旋方向</p></blockquote><p><strong>简并度</strong>：指量子态数（由对应能级的磁量子数决定）</p><h4 id="电子在量子态上的分布"><a href="#电子在量子态上的分布" class="headerlink" title="电子在量子态上的分布"></a>电子在量子态上的分布</h4><p>电子填充量子态需遵从2个原则：</p><ol><li><strong>泡利不相容原理</strong>（计入自旋）：原子中每个量子态最多只能容纳一个电子</li><li><strong>能量最低原理</strong>：原子中的电子，在不违背泡利不相容原理的前提下，总是先占据能量低的量子态</li></ol><h3 id="晶体中的电子状态–能带"><a href="#晶体中的电子状态–能带" class="headerlink" title="晶体中的电子状态–能带"></a>晶体中的电子状态–能带</h3><p>电子共有化运动：</p><ol><li>原子靠近组成晶体，越外层的层壳交叠越多</li><li>电子不再局限于某一原子，可以转移到相邻原子上</li><li>电子的转移只能在不同原子的相似壳层</li></ol><p>电子共有化运动 —&gt; 分裂出若干个相近的能级 —&gt; 形成一个<strong>准连续的能带</strong></p><p>能带重组：</p><p><img src="1.png" alt></p><p> <img src="%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA%5C1.png" alt></p><h4 id="绝对零度时（0K），半导体、绝缘体、金属的能带区别"><a href="#绝对零度时（0K），半导体、绝缘体、金属的能带区别" class="headerlink" title="绝对零度时（0K），半导体、绝缘体、金属的能带区别"></a>绝对零度时（0K），半导体、绝缘体、金属的能带区别</h4><p>半导体，绝缘体，金属能带的区别：</p><ul><li>绝缘体：导带是空带，价带是满带，禁带距离大</li><li>半导体：导带是空带，价带是满带，禁带距离小</li><li>金    属：导带是半满，价带是满带，禁带距离无</li></ul><blockquote><p>电子从价带跃迁到导带，使晶体拥有导电特性</p><ul><li><p>满带、空带：不导电</p></li><li><p>半满带：导电</p></li></ul></blockquote><p>绝缘体和半导体结构类似，在0K时不导电，</p><p>在室温环境下，由于本征激发，半导体有一定的导电性（掺杂之后可以强导电）</p><h2 id="半导体中电子的状态和能带"><a href="#半导体中电子的状态和能带" class="headerlink" title="半导体中电子的状态和能带"></a>半导体中电子的状态和能带</h2><p>单电子近似：晶体中的电子是在晶格的周期性势场（原子核与电子的平均势场）中运动的</p><p>布洛赫定理：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;半导体物理01-–-能带理论&quot;&gt;&lt;a href=&quot;#半导体物理01-–-能带理论&quot; class=&quot;headerlink&quot; title=&quot;半导体物理01 – 能带理论&quot;&gt;&lt;/a&gt;半导体物理01 – 能带理论&lt;/h1&gt;&lt;h2 id=&quot;认识半导体&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="半导体物理学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>汇编作业--电话簿</title>
@@ -507,32 +533,6 @@
     
     
       <category term="计算机使用基础概念" scheme="http://kn0sky.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>汇编基础01：基础概念</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</id>
-    <published>2020-03-30T06:27:19.000Z</published>
-    <updated>2020-04-07T10:32:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编基础01：基础概念"><a href="#汇编基础01：基础概念" class="headerlink" title="汇编基础01：基础概念"></a>汇编基础01：基础概念</h1><h2 id="16-32-64位汇编的区别"><a href="#16-32-64位汇编的区别" class="headerlink" title="16/32/64位汇编的区别"></a>16/32/64位汇编的区别</h2><ul><li>16位汇编：实模式，16位处理器内部，最多处理存储长度为16位</li><li>32位汇编：保护模式，32位处理器内部，最多处理存储长度为32位</li><li>64位汇编：保护模式，64位处理器内部，最多处理存储长度为64位</li></ul><blockquote><p>16位处理器只能运行16位汇编，</p><p>64位处理器可以运行64和32位汇编，</p><p>32位处理器不能运行16位汇编，</p><p>因为模式不一样</p></blockquote><h2 id="基本执行环境"><a href="#基本执行环境" class="headerlink" title="基本执行环境"></a>基本执行环境</h2><p>32位：</p><ul><li><p>8个32位通用寄存器</p></li><li><p>标志寄存器：EFLAGS</p></li><li><p>指令指针寄存器：EIP（记录下一条执行的地址）</p></li></ul><p>64位：</p><ul><li><p>8个64位通用寄存器</p></li><li><p>标志寄存器：RFLAGS</p></li><li><p>指令指针寄存器：RIP（记录下一条执行的地址）</p></li></ul><h3 id="EFLAGS-寄存器"><a href="#EFLAGS-寄存器" class="headerlink" title="EFLAGS 寄存器"></a>EFLAGS 寄存器</h3><p>包含了独立的二进制位，用于控制CPU操作，或反应CPU执行的结果</p><p><img src="%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%5CEFLAGS.png" alt></p><p><img src="EFLAGS.png" alt></p><h3 id="MMX-寄存器"><a href="#MMX-寄存器" class="headerlink" title="MMX 寄存器"></a>MMX 寄存器</h3><p>MMX 寄存器实际上是浮点单元中使用的同样寄存器的别名</p><h3 id="XMM-寄存器"><a href="#XMM-寄存器" class="headerlink" title="XMM 寄存器"></a>XMM 寄存器</h3><p>SIMD的扩展指令集</p><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul><li><p>Ollydbg</p></li><li><p>Visual Studio 2015</p><blockquote><ol><li>新建空项目</li><li>选中项目右键“生成自定义”，选择MASM生成规则</li><li>新建一个.asm后缀的新文件</li><li>选中项目右键–属性–链接器–系统–子系统选&lt;控制台(SUBSYSTEM:CONSOLE)&gt;</li><li>选中项目右键–属性–链接器–高级–入口点–填写 “main”</li></ol></blockquote></li></ul><h2 id="寄存器逻辑结构"><a href="#寄存器逻辑结构" class="headerlink" title="寄存器逻辑结构"></a>寄存器逻辑结构</h2><p>EAX：累加器，操作数和结果数据累加器，返回值运算结果一般都存在这里</p><blockquote><p>64:<code>RAX</code></p><p>32:<code>EAX</code></p><p>16:<code>AX</code></p><p>8:<code>AH+AL</code></p></blockquote><p>EBX：基地址，DS段的数据指针，在内存寻址的时候存放基地址</p><blockquote><p>64:<code>RBX</code></p><p>32:<code>EBX</code></p><p>16:<code>BX</code></p><p>8:<code>BH+BL</code></p></blockquote><p>ECX：计数器，字符串和循环操作的计数器</p><blockquote><p>64:<code>RCX</code></p><p>32:<code>ECX</code></p><p>16:<code>CX</code></p><p>8:<code>CH+CL</code></p></blockquote><p>EDX：存储部分乘法结果和部分除法被除数</p><blockquote><p>64:<code>RDX</code></p><p>32:<code>EDX</code></p><p>16:<code>DX</code></p><p>8:<code>DH+DL</code></p></blockquote><p>EBP：基址指针，SS段的数据指针</p><blockquote><p>64:<code>RBP</code></p><p>32:<code>EBP</code></p><p>16:<code>BP</code></p></blockquote><p>ESP：栈帧指针，指向栈顶，也叫栈顶指针</p><blockquote><p>64:<code>RSP</code></p><p>32:<code>ESP</code></p><p>16:<code>SP</code></p></blockquote><p>EDI：字符串操作的目标指针，ES段的数据指针</p><blockquote><p>64:<code>RDI</code></p><p>32:<code>EDI</code></p><p>16:<code>DI</code></p></blockquote><p>ESI：字符串操作的原始指针，SS段的数据指针</p><blockquote><p>64:<code>RSI</code></p><p>32:<code>ESI</code></p><p>16:<code>SI</code></p></blockquote><h2 id="冯·诺依曼体系结构"><a href="#冯·诺依曼体系结构" class="headerlink" title="冯·诺依曼体系结构"></a>冯·诺依曼体系结构</h2><p>分为5个部分</p><p>输入设备–存储器–输出设备，运算器–控制器</p><h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存</p><h3 id="内存的寻址范围"><a href="#内存的寻址范围" class="headerlink" title="内存的寻址范围"></a>内存的寻址范围</h3><p>32位系统内存的寻址范围是0x00000000-0xFFFFFFFF</p><p>最大寻址范围：0xFFFFFFFF+1(4294967296)</p><blockquote><p>1 Byte = 8 bit</p><p>1 KB = 1024 Byte</p><p>1 MB = 1024 KB</p><p>1 GB = 1024 MB</p></blockquote><p>4294967296 Byte = 4 GB （32位系统最大内存是4 GB） </p><p>64位系统内存寻址范围：0x0000000000000000 – 0xFFFFFFFFFFFFFFFF</p><h3 id="内存和寄存器的区别"><a href="#内存和寄存器的区别" class="headerlink" title="内存和寄存器的区别"></a>内存和寄存器的区别</h3><p>内存：数量庞大，便宜，速度较慢</p><p>寄存器：数量少，昂贵，速度极快，位于CPU内部</p><h3 id="内存的5种表现形式"><a href="#内存的5种表现形式" class="headerlink" title="内存的5种表现形式"></a>内存的5种表现形式</h3><p>立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,DWORD PTR DS:0x????????]</span><br></pre></td></tr></table></figure><p>把后面这个内存给EAX</p><hr><p>寄存器：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX]</span><br></pre></td></tr></table></figure><hr><p>寄存器+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX + 4]</span><br></pre></td></tr></table></figure><hr><p>比例因子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[REG + REG * &#123;1,2,4,8&#125;]</span><br></pre></td></tr></table></figure><hr><p>数组元素地址 = 数组首地址 + 元素索引 * 数组元素占用空间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX ,0x????????</span><br><span class="line">MOV EBX ,0x2</span><br><span class="line">MOV ECX ,DWORD PTR DS:[EAX+EBX*4]</span><br></pre></td></tr></table></figure><hr><p>比例因子+立即数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,0x????????</span><br><span class="line">MOV EBX,0x2</span><br><span class="line">MOV ECX,DWORDPTRDS:[EAX + EBX*4 +1]</span><br></pre></td></tr></table></figure><h2 id="数据存储模式"><a href="#数据存储模式" class="headerlink" title="数据存储模式"></a>数据存储模式</h2><p>大端序：数据高位在内存低位，数据低位在内存高位，常用于ARM架构</p><p>小端序：数据高位在内存高位，数据低位在内存低位，常用于x86、AMD64架构</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://blog.csdn.net/astrotycoon/article/details/76241443" target="_blank" rel="external nofollow noopener noreferrer">EFLAGS寄存器中状态标志（Status Flags）小结</a></li><li><a href="https://blog.csdn.net/jn1158359135/article/details/7761011" target="_blank" rel="external nofollow noopener noreferrer">x86—EFLAGS寄存器详解</a></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编基础01：基础概念&quot;&gt;&lt;a href=&quot;#汇编基础01：基础概念&quot; class=&quot;headerlink&quot; title=&quot;汇编基础01：基础概念&quot;&gt;&lt;/a&gt;汇编基础01：基础概念&lt;/h1&gt;&lt;h2 id=&quot;16-32-64位汇编的区别&quot;&gt;&lt;a href=&quot;#16-
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
