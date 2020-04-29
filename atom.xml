@@ -43,6 +43,32 @@
   </entry>
   
   <entry>
+    <title>汇编作业--电话簿</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/</id>
+    <published>2020-04-18T06:27:19.000Z</published>
+    <updated>2020-04-18T07:49:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编作业–电话簿"><a href="#汇编作业–电话簿" class="headerlink" title="汇编作业–电话簿"></a>汇编作业–电话簿</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**项目名称：**</span>汇编语言电话本</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目背景：**</span>基于同学们学习汇编语言后没有练习的问题，特以该项目作为阶段性练习。</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目目的：**</span>熟悉汇编语言编程，练习编程逻辑，熟悉Win32 API调用模式</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目要求：**</span>编写一个具有增删改查功能的电话本，基于控制台。具体要求如下：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>基本功能：电话本具有姓名与电话号码两项属性，并且使用数据结构作为存储</span><br><span class="line"><span class="bullet">2. </span>增加功能：插入姓名与电话号码到数据结构的最后。</span><br><span class="line"><span class="bullet">3. </span>查询功能：输入姓名，以此作为依据，到数据结构中查找，将找到的信息打印到控制台。</span><br><span class="line"><span class="bullet">4. </span>删除功能：输入姓名或电话号码，以此作为依据，到数据结构中查找，且删除该条信息。</span><br><span class="line"><span class="bullet">5. </span>修改功能：输入姓名或电话号码，以此作为依据，到数据结构中查找，找到后打印信息，要求输入新的姓名或电话，接受后修改原有条目。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**编写指南：**</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**1.**</span><span class="strong">**数组的编写方式**</span></span><br><span class="line"></span><br><span class="line">TelephoneNumber dd 30 DUP(?)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**2.**</span><span class="strong">**结构体的编写方式**</span></span><br><span class="line"></span><br><span class="line">Name STRUCT</span><br><span class="line"></span><br><span class="line">具体成员信息</span><br><span class="line"></span><br><span class="line">Name ENDS</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**3.**</span><span class="strong">**控制台相关的API**</span></span><br><span class="line"></span><br><span class="line">GetStdHandle 获得标准输入输出的窗口句柄</span><br><span class="line"></span><br><span class="line">SetConsoleTextAttribute是设置控制台字体颜色和背景色</span><br><span class="line"></span><br><span class="line">CONSOLE<span class="emphasis">_CURSOR_</span>INFO用于存放控制光标信息</span><br><span class="line"></span><br><span class="line">SetConsoleCursorInfo设置光标的信息</span><br><span class="line"></span><br><span class="line">GetConsoleScreenBufferInfo取得控制台屏幕信息</span><br><span class="line"></span><br><span class="line">SetConsoleCursorPosition设置光标位置</span><br><span class="line"></span><br><span class="line">WriteConsoleOutput直接写输入缓冲区</span><br><span class="line"></span><br><span class="line">SetConsoleTitle设置控制台的标题</span><br><span class="line"></span><br><span class="line">ReadConsole 读控制台</span><br><span class="line"></span><br><span class="line">WriteConsole 写控制台</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编作业–电话簿&quot;&gt;&lt;a href=&quot;#汇编作业–电话簿&quot; class=&quot;headerlink&quot; title=&quot;汇编作业–电话簿&quot;&gt;&lt;/a&gt;汇编作业–电话簿&lt;/h1&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>汇编基础10--使用函数</title>
     <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/"/>
     <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/</id>
@@ -109,32 +135,6 @@
       
         &lt;h1 id=&quot;汇编基础12-–-数组和结构体&quot;&gt;&lt;a href=&quot;#汇编基础12-–-数组和结构体&quot; class=&quot;headerlink&quot; title=&quot;汇编基础12 – 数组和结构体&quot;&gt;&lt;/a&gt;汇编基础12 – 数组和结构体&lt;/h1&gt;&lt;p&gt;数组的声明和使用：&lt;/p&gt;
 &lt;fig
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>汇编作业--电话簿</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/</id>
-    <published>2020-04-18T06:27:19.000Z</published>
-    <updated>2020-04-18T07:49:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编作业–电话簿"><a href="#汇编作业–电话簿" class="headerlink" title="汇编作业–电话簿"></a>汇编作业–电话簿</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**项目名称：**</span>汇编语言电话本</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目背景：**</span>基于同学们学习汇编语言后没有练习的问题，特以该项目作为阶段性练习。</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目目的：**</span>熟悉汇编语言编程，练习编程逻辑，熟悉Win32 API调用模式</span><br><span class="line"></span><br><span class="line"><span class="strong">**项目要求：**</span>编写一个具有增删改查功能的电话本，基于控制台。具体要求如下：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>基本功能：电话本具有姓名与电话号码两项属性，并且使用数据结构作为存储</span><br><span class="line"><span class="bullet">2. </span>增加功能：插入姓名与电话号码到数据结构的最后。</span><br><span class="line"><span class="bullet">3. </span>查询功能：输入姓名，以此作为依据，到数据结构中查找，将找到的信息打印到控制台。</span><br><span class="line"><span class="bullet">4. </span>删除功能：输入姓名或电话号码，以此作为依据，到数据结构中查找，且删除该条信息。</span><br><span class="line"><span class="bullet">5. </span>修改功能：输入姓名或电话号码，以此作为依据，到数据结构中查找，找到后打印信息，要求输入新的姓名或电话，接受后修改原有条目。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**编写指南：**</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**1.**</span><span class="strong">**数组的编写方式**</span></span><br><span class="line"></span><br><span class="line">TelephoneNumber dd 30 DUP(?)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**2.**</span><span class="strong">**结构体的编写方式**</span></span><br><span class="line"></span><br><span class="line">Name STRUCT</span><br><span class="line"></span><br><span class="line">具体成员信息</span><br><span class="line"></span><br><span class="line">Name ENDS</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="strong">**3.**</span><span class="strong">**控制台相关的API**</span></span><br><span class="line"></span><br><span class="line">GetStdHandle 获得标准输入输出的窗口句柄</span><br><span class="line"></span><br><span class="line">SetConsoleTextAttribute是设置控制台字体颜色和背景色</span><br><span class="line"></span><br><span class="line">CONSOLE<span class="emphasis">_CURSOR_</span>INFO用于存放控制光标信息</span><br><span class="line"></span><br><span class="line">SetConsoleCursorInfo设置光标的信息</span><br><span class="line"></span><br><span class="line">GetConsoleScreenBufferInfo取得控制台屏幕信息</span><br><span class="line"></span><br><span class="line">SetConsoleCursorPosition设置光标位置</span><br><span class="line"></span><br><span class="line">WriteConsoleOutput直接写输入缓冲区</span><br><span class="line"></span><br><span class="line">SetConsoleTitle设置控制台的标题</span><br><span class="line"></span><br><span class="line">ReadConsole 读控制台</span><br><span class="line"></span><br><span class="line">WriteConsole 写控制台</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编作业–电话簿&quot;&gt;&lt;a href=&quot;#汇编作业–电话簿&quot; class=&quot;headerlink&quot; title=&quot;汇编作业–电话簿&quot;&gt;&lt;/a&gt;汇编作业–电话簿&lt;/h1&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
       
     
     </summary>
