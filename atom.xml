@@ -306,32 +306,6 @@
   </entry>
   
   <entry>
-    <title>汇编基础06：数据传送指令</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/</id>
-    <published>2020-04-04T15:27:19.000Z</published>
-    <updated>2020-04-04T15:28:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编基础06：数据传送指令"><a href="#汇编基础06：数据传送指令" class="headerlink" title="汇编基础06：数据传送指令"></a>汇编基础06：数据传送指令</h1><h2 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h2><p>格式：MOV OPDR1,OPDR2</p><p>功能：将一个源操作数传送到目的操作数中</p><p>OPDR1为目的操作数，可以使寄存器、存储器、累加器</p><p>OPDR2为源操作数，可以使寄存器、存储器、累加器、立即数</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,1</span><br><span class="line">mov ebx ,eax</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="LEA指令"><a href="#LEA指令" class="headerlink" title="LEA指令"></a>LEA指令</h2><p>有效地址传送指令</p><p>格式：LEA OPDR1,OPDR2</p><p>功能：将源操作数给出的有效地址传送到制定寄存器中</p><p>OPDR1必须是寄存器</p><blockquote><p>将OPDR2的内存地址给了OPDR1</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">lea eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="XCHG指令"><a href="#XCHG指令" class="headerlink" title="XCHG指令"></a>XCHG指令</h2><p>数据交换指令</p><p>格式：XCHG OPDR1, OPDR2</p><p>功能，两个操作数的值互换</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">xchg eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;a href=&quot;#汇编基础06：数据传送指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;/a&gt;汇编基础06：数据传送指令&lt;/h1&gt;&lt;h2 id=&quot;MOV指令&quot;&gt;&lt;a href=&quot;#MOV指
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>51单片机入门01--LED流水灯</title>
     <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/"/>
     <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/</id>
@@ -353,6 +327,32 @@
       <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础06：数据传送指令</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/</id>
+    <published>2020-04-04T15:27:19.000Z</published>
+    <updated>2020-04-04T15:28:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础06：数据传送指令"><a href="#汇编基础06：数据传送指令" class="headerlink" title="汇编基础06：数据传送指令"></a>汇编基础06：数据传送指令</h1><h2 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h2><p>格式：MOV OPDR1,OPDR2</p><p>功能：将一个源操作数传送到目的操作数中</p><p>OPDR1为目的操作数，可以使寄存器、存储器、累加器</p><p>OPDR2为源操作数，可以使寄存器、存储器、累加器、立即数</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">mov eax ,1</span><br><span class="line">mov ebx ,eax</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="LEA指令"><a href="#LEA指令" class="headerlink" title="LEA指令"></a>LEA指令</h2><p>有效地址传送指令</p><p>格式：LEA OPDR1,OPDR2</p><p>功能：将源操作数给出的有效地址传送到制定寄存器中</p><p>OPDR1必须是寄存器</p><blockquote><p>将OPDR2的内存地址给了OPDR1</p></blockquote><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">lea eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="XCHG指令"><a href="#XCHG指令" class="headerlink" title="XCHG指令"></a>XCHG指令</h2><p>数据交换指令</p><p>格式：XCHG OPDR1, OPDR2</p><p>功能，两个操作数的值互换</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat, stdcall</span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">xchg eax ,dword ptr ss:[esp-4]</span><br><span class="line">mov eax ,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;a href=&quot;#汇编基础06：数据传送指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础06：数据传送指令&quot;&gt;&lt;/a&gt;汇编基础06：数据传送指令&lt;/h1&gt;&lt;h2 id=&quot;MOV指令&quot;&gt;&lt;a href=&quot;#MOV指
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
