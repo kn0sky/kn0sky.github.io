@@ -3,24 +3,27 @@
 <head>
     <meta charset="utf-8">
     
-    <title>内存 | kn0sky&#39;wiki</title>
+    <title>51单片机入门03--按键 | kn0sky&#39;wiki</title>
     
     
         <meta name="keywords" content="kn0sky">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="内存冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存 内存的寻址范围32位系统内存的寻址范围是0x00000000-0xFFFFFFFF 最大寻址范围：0xFFFFFFFF+1(4294967296)  1 Byte &#x3D; 8 bit 1 KB &#x3D; 1024 Byte 1 MB &#x3D; 1024 KB 1 GB &#x3D; 1024 MB  429496">
+    <meta name="description" content="51单片机入门03–按键键盘的原理&amp;分类  按键需要一个上拉电阻，当没有按下去的时候，由于上拉电阻，左边的端口是高电平，当按键闭合后，左边的端口会变成低电平">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存">
-<meta property="og:url" content="http://kn0sky.com/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/index.html">
+<meta property="og:title" content="51单片机入门03--按键">
+<meta property="og:url" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/index.html">
 <meta property="og:site_name" content="kn0sky&#39;wiki">
-<meta property="og:description" content="内存冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存 内存的寻址范围32位系统内存的寻址范围是0x00000000-0xFFFFFFFF 最大寻址范围：0xFFFFFFFF+1(4294967296)  1 Byte &#x3D; 8 bit 1 KB &#x3D; 1024 Byte 1 MB &#x3D; 1024 KB 1 GB &#x3D; 1024 MB  429496">
+<meta property="og:description" content="51单片机入门03–按键键盘的原理&amp;分类  按键需要一个上拉电阻，当没有按下去的时候，由于上拉电阻，左边的端口是高电平，当按键闭合后，左边的端口会变成低电平">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-02T12:27:19.000Z">
-<meta property="article:modified_time" content="2020-04-04T03:17:00.000Z">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE%5Cimage-20200513133011891.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/image-20200513133011891.png">
+<meta property="article:published_time" content="2020-05-13T05:27:19.000Z">
+<meta property="article:modified_time" content="2020-05-13T05:33:22.000Z">
 <meta property="article:author" content="kn0sky">
 <meta property="article:tag" content="kn0sky">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE%5Cimage-20200513133011891.png">
     
 
     
@@ -188,20 +191,20 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%A4%87%E5%BF%98%E5%BD%95/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/">常用工具备忘录</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             学习笔记
                         </a>
                          <ul class="unstyled" id="tree"> 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             51单片机学习笔记
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/">51单片机入门01--LED流水灯</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A802--%E6%95%B0%E7%A0%81%E7%AE%A1/">51单片机入门02--数码管</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/">51单片机入门03--按键</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/">51单片机入门01--LED流水灯</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A802--%E6%95%B0%E7%A0%81%E7%AE%A1/">51单片机入门02--数码管</a></li>  <li class="file active"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/">51单片机入门03--按键</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -269,13 +272,13 @@
                      </ul> 
                     </li> 
                     
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             计算机使用基础概念
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/">寄存器逻辑结构</a></li>  <li class="file active"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/">内存</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/">寄存器逻辑结构</a></li>  <li class="file"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/">内存</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/wiki/test/">test</a></li>  </ul> 
     </div>
@@ -348,7 +351,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-计算机使用基础概念/内存" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-学习笔记/51单片机学习笔记/51单片机入门03--按键" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -358,15 +361,15 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">计算机使用基础概念</a>
+        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">51单片机学习笔记</a>
     </div>
 
                         
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%86%85%E5%AD%98/">
-            <time datetime="2020-04-02T12:27:19.000Z" itemprop="datePublished">2020-04-02</time>
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/">
+            <time datetime="2020-05-13T05:27:19.000Z" itemprop="datePublished">2020-05-13</time>
         </a>
     </div>
 
@@ -381,7 +384,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            内存
+            51单片机入门03--按键
         </h1>
     
 
@@ -394,60 +397,14 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存"><span class="toc-number">1.</span> <span class="toc-text">内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存的寻址范围"><span class="toc-number">1.1.</span> <span class="toc-text">内存的寻址范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存和寄存器的区别"><span class="toc-number">1.2.</span> <span class="toc-text">内存和寄存器的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存的5种表现形式"><span class="toc-number">1.3.</span> <span class="toc-text">内存的5种表现形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储模式"><span class="toc-number">2.</span> <span class="toc-text">数据存储模式</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#51单片机入门03–按键"><span class="toc-number">1.</span> <span class="toc-text">51单片机入门03–按键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#键盘的原理-amp-分类"><span class="toc-number">1.0.1.</span> <span class="toc-text">键盘的原理&amp;分类</span></a></li></ol></li></ol>
                 </div>
             
         
         
-            <h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>冯诺依曼中用来存储程序和数据的部件叫做存储器，存储器分为主存储器（内存储器）和辅助存储器，主存储器也叫内存</p>
-<h3 id="内存的寻址范围"><a href="#内存的寻址范围" class="headerlink" title="内存的寻址范围"></a>内存的寻址范围</h3><p>32位系统内存的寻址范围是0x00000000-0xFFFFFFFF</p>
-<p>最大寻址范围：0xFFFFFFFF+1(4294967296)</p>
-<blockquote>
-<p>1 Byte = 8 bit</p>
-<p>1 KB = 1024 Byte</p>
-<p>1 MB = 1024 KB</p>
-<p>1 GB = 1024 MB</p>
-</blockquote>
-<p>4294967296 Byte = 4 GB （32位系统最大内存是4 GB） </p>
-<p>64位系统内存寻址范围：0x0000000000000000 – 0xFFFFFFFFFFFFFFFF</p>
-<h3 id="内存和寄存器的区别"><a href="#内存和寄存器的区别" class="headerlink" title="内存和寄存器的区别"></a>内存和寄存器的区别</h3><p>内存：数量庞大，便宜，速度较慢</p>
-<p>寄存器：数量少，昂贵，速度极快，位于CPU内部</p>
-<h3 id="内存的5种表现形式"><a href="#内存的5种表现形式" class="headerlink" title="内存的5种表现形式"></a>内存的5种表现形式</h3><p>立即数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,DWORD PTR DS:0x????????]</span><br></pre></td></tr></table></figure>
-
-<p>把后面这个内存给EAX</p>
-<hr>
-<p>寄存器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX]</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>寄存器+立即数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV EBX ,0x????????</span><br><span class="line">MOV EAX ,DWORD PTR DS:[EBX + 4]</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>比例因子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[REG + REG * &#123;1,2,4,8&#125;]</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>数组元素地址 = 数组首地址 + 元素索引 * 数组元素占用空间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX ,0x????????</span><br><span class="line">MOV EBX ,0x2</span><br><span class="line">MOV ECX ,DWORD PTR DS:[EAX+EBX*4]</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>比例因子+立即数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX,0x????????</span><br><span class="line">MOV EBX,0x2</span><br><span class="line">MOV ECX,DWORDPTRDS:[EAX + EBX*4 +1]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数据存储模式"><a href="#数据存储模式" class="headerlink" title="数据存储模式"></a>数据存储模式</h2><p>大端序：数据高位在内存低位，数据低位在内存高位，常用于ARM架构</p>
-<p>小端序：数据高位在内存高位，数据低位在内存低位，常用于x86、AMD64架构</p>
+            <h1 id="51单片机入门03–按键"><a href="#51单片机入门03–按键" class="headerlink" title="51单片机入门03–按键"></a>51单片机入门03–按键</h1><h3 id="键盘的原理-amp-分类"><a href="#键盘的原理-amp-分类" class="headerlink" title="键盘的原理&amp;分类"></a>键盘的原理&amp;分类</h3><p><img src="51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE%5Cimage-20200513133011891.png" alt="image-20200513133011891"></p>
+<p><img src="image-20200513133011891.png" alt="image-20200513133011891"></p>
+<p>按键需要一个上拉电阻，当没有按下去的时候，由于上拉电阻，左边的端口是高电平，当按键闭合后，左边的端口会变成低电平</p>
 
             </div>
         
@@ -460,19 +417,10 @@
     
 <nav id="article-nav">
     
-        <a href="/wiki/%E5%A4%87%E5%BF%98%E5%BD%95/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    常用工具备忘录
-                
-            </div>
-        </a>
     
-    
-        <a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B001--%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">寄存器逻辑结构</div>
+            <div class="article-nav-title">王道计组笔记01--计算机系统概述</div>
         </a>
     
 </nav>
