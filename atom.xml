@@ -437,32 +437,6 @@
   </entry>
   
   <entry>
-    <title>汇编基础11--win32汇编</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/</id>
-    <published>2020-04-18T06:27:19.000Z</published>
-    <updated>2020-04-18T08:17:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编基础11-–-win32汇编"><a href="#汇编基础11-–-win32汇编" class="headerlink" title="汇编基础11 – win32汇编"></a>汇编基础11 – win32汇编</h1><p><strong>API</strong>：（Application Programming Interface，<a href="https://baike.baidu.com/item/应用程序" target="_blank" rel="external nofollow noopener noreferrer">应用程序</a>接口）是一些预先定义的<a href="https://baike.baidu.com/item/函数" target="_blank" rel="external nofollow noopener noreferrer">函数</a>，或指软件系统不同组成部分衔接的约定。 [1] 目的是提供<a href="https://baike.baidu.com/item/应用程序" target="_blank" rel="external nofollow noopener noreferrer">应用程序</a>与开发人员基于某<a href="https://baike.baidu.com/item/软件" target="_blank" rel="external nofollow noopener noreferrer">软件</a>或硬件得以访问一组<a href="https://baike.baidu.com/item/例程" target="_blank" rel="external nofollow noopener noreferrer">例程</a>的能力，而又无需访问原码，或理解内部工作<a href="https://baike.baidu.com/item/机制" target="_blank" rel="external nofollow noopener noreferrer">机制</a>的细节。</p><p><strong>win32汇编</strong>是通过使用Windows提供的接口进行编程</p><p>示例：hello world！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat,stdcall</span><br><span class="line"></span><br><span class="line">includelib user32.lib</span><br><span class="line">includelib kernel32.lib</span><br><span class="line"></span><br><span class="line">;声明函数</span><br><span class="line">ExitProcess PROTO, dwExitCode:DWORD</span><br><span class="line">MessageBoxA PROTO, hWnd:DWORD ,lpText:BYTE ,lpCaption:BYTE ,uType:DWORD</span><br><span class="line">;参数从栈中调用出来，左边的参数在栈下面，右边的在上面</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">str1 db &quot;Hello world&quot; ,0;需要,0结尾，不然报错</span><br><span class="line">;db是一个占了8位的类型，db后面的内容视为数据而不视为代码</span><br><span class="line"></span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">push 1</span><br><span class="line">lea eax ,str1</span><br><span class="line">push eax</span><br><span class="line">push eax</span><br><span class="line">push 0</span><br><span class="line">call MessageBoxA</span><br><span class="line">add esp ,16 ;堆栈平衡</span><br><span class="line">call ExitProcess</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编基础11-–-win32汇编&quot;&gt;&lt;a href=&quot;#汇编基础11-–-win32汇编&quot; class=&quot;headerlink&quot; title=&quot;汇编基础11 – win32汇编&quot;&gt;&lt;/a&gt;汇编基础11 – win32汇编&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;API&lt;/s
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>汇编基础10--使用函数</title>
     <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/"/>
     <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/</id>
@@ -476,6 +450,32 @@
       
       
         &lt;h1 id=&quot;汇编基础10-–-使用函数&quot;&gt;&lt;a href=&quot;#汇编基础10-–-使用函数&quot; class=&quot;headerlink&quot; title=&quot;汇编基础10 – 使用函数&quot;&gt;&lt;/a&gt;汇编基础10 – 使用函数&lt;/h1&gt;&lt;h2 id=&quot;函数编写&quot;&gt;&lt;a href=&quot;#函数编写&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>汇编基础11--win32汇编</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/</id>
+    <published>2020-04-18T06:27:19.000Z</published>
+    <updated>2020-04-18T08:17:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础11-–-win32汇编"><a href="#汇编基础11-–-win32汇编" class="headerlink" title="汇编基础11 – win32汇编"></a>汇编基础11 – win32汇编</h1><p><strong>API</strong>：（Application Programming Interface，<a href="https://baike.baidu.com/item/应用程序" target="_blank" rel="external nofollow noopener noreferrer">应用程序</a>接口）是一些预先定义的<a href="https://baike.baidu.com/item/函数" target="_blank" rel="external nofollow noopener noreferrer">函数</a>，或指软件系统不同组成部分衔接的约定。 [1] 目的是提供<a href="https://baike.baidu.com/item/应用程序" target="_blank" rel="external nofollow noopener noreferrer">应用程序</a>与开发人员基于某<a href="https://baike.baidu.com/item/软件" target="_blank" rel="external nofollow noopener noreferrer">软件</a>或硬件得以访问一组<a href="https://baike.baidu.com/item/例程" target="_blank" rel="external nofollow noopener noreferrer">例程</a>的能力，而又无需访问原码，或理解内部工作<a href="https://baike.baidu.com/item/机制" target="_blank" rel="external nofollow noopener noreferrer">机制</a>的细节。</p><p><strong>win32汇编</strong>是通过使用Windows提供的接口进行编程</p><p>示例：hello world！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat,stdcall</span><br><span class="line"></span><br><span class="line">includelib user32.lib</span><br><span class="line">includelib kernel32.lib</span><br><span class="line"></span><br><span class="line">;声明函数</span><br><span class="line">ExitProcess PROTO, dwExitCode:DWORD</span><br><span class="line">MessageBoxA PROTO, hWnd:DWORD ,lpText:BYTE ,lpCaption:BYTE ,uType:DWORD</span><br><span class="line">;参数从栈中调用出来，左边的参数在栈下面，右边的在上面</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">str1 db &quot;Hello world&quot; ,0;需要,0结尾，不然报错</span><br><span class="line">;db是一个占了8位的类型，db后面的内容视为数据而不视为代码</span><br><span class="line"></span><br><span class="line">.code</span><br><span class="line">main proc</span><br><span class="line">push 1</span><br><span class="line">lea eax ,str1</span><br><span class="line">push eax</span><br><span class="line">push eax</span><br><span class="line">push 0</span><br><span class="line">call MessageBoxA</span><br><span class="line">add esp ,16 ;堆栈平衡</span><br><span class="line">call ExitProcess</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础11-–-win32汇编&quot;&gt;&lt;a href=&quot;#汇编基础11-–-win32汇编&quot; class=&quot;headerlink&quot; title=&quot;汇编基础11 – win32汇编&quot;&gt;&lt;/a&gt;汇编基础11 – win32汇编&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;API&lt;/s
       
     
     </summary>
