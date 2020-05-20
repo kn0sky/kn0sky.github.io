@@ -410,6 +410,33 @@
   </entry>
   
   <entry>
+    <title>汇编基础12--数组和结构体</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/</id>
+    <published>2020-04-18T06:27:19.000Z</published>
+    <updated>2020-05-20T05:52:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="汇编基础12-–-数组和结构体"><a href="#汇编基础12-–-数组和结构体" class="headerlink" title="汇编基础12 – 数组和结构体"></a>汇编基础12 – 数组和结构体</h1><p>数组的声明和使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat ,stdcall</span><br><span class="line"></span><br><span class="line">.Data</span><br><span class="line">valu dd 11,22,33</span><br><span class="line">;声明并初始化有三个元素的 DWORD 数组; 该数组每个元素是 4 字节</span><br><span class="line">;也可以按如下方式写</span><br><span class="line">;valu dd 11</span><br><span class="line">;  dd 22,33</span><br><span class="line"></span><br><span class="line">.Code</span><br><span class="line">main PROC</span><br><span class="line">mov eax,valu;0x0B</span><br><span class="line">mov eax,valu[4];0x16</span><br><span class="line">mov eax,valu[8];0x21</span><br><span class="line">;mov eax,valu[4*0]   ;0x0B</span><br><span class="line">;mov eax,valu[4*1];0x16</span><br><span class="line">;mov eax,valu[4*2];0x21</span><br><span class="line">mov [valu+4],5</span><br><span class="line">mov ebx ,[valu+4]</span><br><span class="line">mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><p>使用伪指令DUP：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat ,stdcall</span><br><span class="line"></span><br><span class="line">.Data</span><br><span class="line"></span><br><span class="line">valu dd 3 dup(0);用于初始化数组</span><br><span class="line"></span><br><span class="line">.Code</span><br><span class="line">main PROC</span><br><span class="line">mov eax,valu</span><br><span class="line">mov eax,valu[4]</span><br><span class="line">mov eax,valu[8]</span><br><span class="line">mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://www.cnblogs.com/del/archive/2010/04/04/1704257.html" target="_blank" rel="external nofollow noopener noreferrer">学 Win32 汇编6: 伪指令 DUP 与数组</a></li><li></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;汇编基础12-–-数组和结构体&quot;&gt;&lt;a href=&quot;#汇编基础12-–-数组和结构体&quot; class=&quot;headerlink&quot; title=&quot;汇编基础12 – 数组和结构体&quot;&gt;&lt;/a&gt;汇编基础12 – 数组和结构体&lt;/h1&gt;&lt;p&gt;数组的声明和使用：&lt;/p&gt;
+&lt;fig
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>汇编基础10--使用函数</title>
     <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/"/>
     <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/</id>
@@ -449,33 +476,6 @@
       
       
         &lt;h1 id=&quot;汇编基础11-–-win32汇编&quot;&gt;&lt;a href=&quot;#汇编基础11-–-win32汇编&quot; class=&quot;headerlink&quot; title=&quot;汇编基础11 – win32汇编&quot;&gt;&lt;/a&gt;汇编基础11 – win32汇编&lt;/h1&gt;&lt;h3 id=&quot;控制台程序的输入输
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>汇编基础12--数组和结构体</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/</id>
-    <published>2020-04-18T06:27:19.000Z</published>
-    <updated>2020-05-20T05:52:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="汇编基础12-–-数组和结构体"><a href="#汇编基础12-–-数组和结构体" class="headerlink" title="汇编基础12 – 数组和结构体"></a>汇编基础12 – 数组和结构体</h1><p>数组的声明和使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat ,stdcall</span><br><span class="line"></span><br><span class="line">.Data</span><br><span class="line">valu dd 11,22,33</span><br><span class="line">;声明并初始化有三个元素的 DWORD 数组; 该数组每个元素是 4 字节</span><br><span class="line">;也可以按如下方式写</span><br><span class="line">;valu dd 11</span><br><span class="line">;  dd 22,33</span><br><span class="line"></span><br><span class="line">.Code</span><br><span class="line">main PROC</span><br><span class="line">mov eax,valu;0x0B</span><br><span class="line">mov eax,valu[4];0x16</span><br><span class="line">mov eax,valu[8];0x21</span><br><span class="line">;mov eax,valu[4*0]   ;0x0B</span><br><span class="line">;mov eax,valu[4*1];0x16</span><br><span class="line">;mov eax,valu[4*2];0x21</span><br><span class="line">mov [valu+4],5</span><br><span class="line">mov ebx ,[valu+4]</span><br><span class="line">mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><p>使用伪指令DUP：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.586</span><br><span class="line">.MODEL flat ,stdcall</span><br><span class="line"></span><br><span class="line">.Data</span><br><span class="line"></span><br><span class="line">valu dd 3 dup(0);用于初始化数组</span><br><span class="line"></span><br><span class="line">.Code</span><br><span class="line">main PROC</span><br><span class="line">mov eax,valu</span><br><span class="line">mov eax,valu[4]</span><br><span class="line">mov eax,valu[8]</span><br><span class="line">mov eax,eax</span><br><span class="line">main ENDP</span><br><span class="line">END main</span><br></pre></td></tr></table></figure><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://www.cnblogs.com/del/archive/2010/04/04/1704257.html" target="_blank" rel="external nofollow noopener noreferrer">学 Win32 汇编6: 伪指令 DUP 与数组</a></li><li></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;汇编基础12-–-数组和结构体&quot;&gt;&lt;a href=&quot;#汇编基础12-–-数组和结构体&quot; class=&quot;headerlink&quot; title=&quot;汇编基础12 – 数组和结构体&quot;&gt;&lt;/a&gt;汇编基础12 – 数组和结构体&lt;/h1&gt;&lt;p&gt;数组的声明和使用：&lt;/p&gt;
-&lt;fig
       
     
     </summary>
