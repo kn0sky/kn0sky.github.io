@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-05-29T12:47:53.000Z</updated>
+  <updated>2020-05-31T10:22:03.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Vulnhub】Sunset:nightfall--Workthourgh</title>
+    <link href="http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/"/>
+    <id>http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/</id>
+    <published>2020-05-31T08:36:15.000Z</published>
+    <updated>2020-05-31T10:22:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="【Vulnhub】Sunset-nightfall–Workthourgh"><a href="#【Vulnhub】Sunset-nightfall–Workthourgh" class="headerlink" title="【Vulnhub】Sunset:nightfall–Workthourgh"></a>【Vulnhub】Sunset:nightfall–Workthourgh</h2><blockquote><p>文章作者：kn0sky</p><p>作者博客：kn0sky.com</p></blockquote><h3 id="靶机信息"><a href="#靶机信息" class="headerlink" title="靶机信息"></a>靶机信息</h3><h3 id="用到的工具-知识"><a href="#用到的工具-知识" class="headerlink" title="用到的工具/知识"></a>用到的工具/知识</h3><ul><li><h3 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h3></li></ul><p>攻击机<code>IP</code>：192.168.101.5</p><p>靶机<code>IP</code>：192.168.101.6</p><p><strong>端口扫描：</strong></p><p><img src="image-20200531164459736.png" alt="image-20200531164459736"></p><p>目标开放了21/22/80/139/445/3306端口</p><p>这几个端口可能存在的问题：【找图片/表格】</p><p>80端口是Apache默认页面，目录扫描之后除了Apache还有一个403进不去</p><p>见到samba就枚举用户名：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum4linux 192.168.101.6</span><br></pre></td></tr></table></figure><p><img src="image-20200531181458414.png" alt="image-20200531181458414"></p><p>得到用户名：<code>matt</code>和<code>nightfall</code></p><p>使用<code>hydra</code>去爆破ftp账号弱口令：</p><p><img src="image-20200531182042736.png" alt="image-20200531182042736"></p><p>得到<code>matt</code>的密码为<code>cheese</code></p><p>登录ftp看看：</p><p><img src="image-20200531182159809.png" alt="image-20200531182159809"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href></a></li><li><a href></a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;【Vulnhub】Sunset-nightfall–Workthourgh&quot;&gt;&lt;a href=&quot;#【Vulnhub】Sunset-nightfall–Workthourgh&quot; class=&quot;headerlink&quot; title=&quot;【Vulnhub】Sunset:ni
+      
+    
+    </summary>
+    
+    
+      <category term="靶机笔记" scheme="http://kn0sky.com/categories/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="vulnhub" scheme="http://kn0sky.com/categories/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>open-source Write Up</title>
@@ -510,32 +536,6 @@
       <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>王道计组笔记01--计算机系统概述</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B001--%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B001--%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</id>
-    <published>2020-05-13T02:17:33.000Z</published>
-    <updated>2020-05-13T01:54:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="王道计组笔记01–计算机系统概述"><a href="#王道计组笔记01–计算机系统概述" class="headerlink" title="王道计组笔记01–计算机系统概述"></a>王道计组笔记01–计算机系统概述</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;王道计组笔记01–计算机系统概述&quot;&gt;&lt;a href=&quot;#王道计组笔记01–计算机系统概述&quot; class=&quot;headerlink&quot; title=&quot;王道计组笔记01–计算机系统概述&quot;&gt;&lt;/a&gt;王道计组笔记01–计算机系统概述&lt;/h1&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="王道计组书学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%BB%84%E4%B9%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
