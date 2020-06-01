@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kn0sky.com/"/>
-  <updated>2020-05-31T10:22:03.000Z</updated>
+  <updated>2020-06-01T07:52:12.000Z</updated>
   <id>http://kn0sky.com/</id>
   
   <author>
@@ -17,13 +17,69 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Vulnhub】Sunset:nightfall--Workthourgh</title>
+    <title>C++基础01--初见C++</title>
+    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C++/"/>
+    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C++/</id>
+    <published>2020-06-01T07:40:50.000Z</published>
+    <updated>2020-06-01T07:52:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-语言基础01–初见C"><a href="#C-语言基础01–初见C" class="headerlink" title="C++语言基础01–初见C++"></a>C++语言基础01–初见C++</h1><p>本系列笔记基于C++17标准</p><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-语言基础01–初见C&quot;&gt;&lt;a href=&quot;#C-语言基础01–初见C&quot; class=&quot;headerlink&quot; title=&quot;C++语言基础01–初见C++&quot;&gt;&lt;/a&gt;C++语言基础01–初见C++&lt;/h1&gt;&lt;p&gt;本系列笔记基于C++17标准&lt;/p&gt;
+&lt;h3 i
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="C++学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常见端口号&amp;漏洞</title>
+    <link href="http://kn0sky.com/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3&amp;%E6%BC%8F%E6%B4%9E/"/>
+    <id>http://kn0sky.com/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3&amp;%E6%BC%8F%E6%B4%9E/</id>
+    <published>2020-06-01T00:06:19.000Z</published>
+    <updated>2020-05-31T23:48:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常见端口号-amp-漏洞"><a href="#常见端口号-amp-漏洞" class="headerlink" title="常见端口号&amp;漏洞"></a>常见端口号&amp;漏洞</h2><table><thead><tr><th>端口号</th><th>端口说明</th><th>攻击技巧</th></tr></thead><tbody><tr><td>21/22/69</td><td>ftp/tftp：文件传输协议</td><td>爆破\嗅探\溢出\后门</td></tr><tr><td>22</td><td>ssh：远程连接</td><td>爆破OpenSSH；28个退格</td></tr><tr><td>23</td><td>telnet：远程连接</td><td>爆破\嗅探</td></tr><tr><td>25</td><td>smtp：邮件服务</td><td>邮件伪造</td></tr><tr><td>53</td><td>DNS：域名系统</td><td>DNS区域传输\DNS劫持\DNS缓存投毒\DNS欺骗\利用DNS隧道技术刺透防火墙</td></tr><tr><td>67/68</td><td>dhcp</td><td>劫持\欺骗</td></tr><tr><td>110</td><td>pop3</td><td>爆破</td></tr><tr><td>139</td><td>samba</td><td>爆破\未授权访问\远程代码执行</td></tr><tr><td>143</td><td>imap</td><td>爆破</td></tr><tr><td>161</td><td>snmp</td><td>爆破</td></tr><tr><td>389</td><td>ldap</td><td>注入攻击\未授权访问</td></tr><tr><td>512/513/514</td><td>linux r</td><td>直接使用rlogin</td></tr><tr><td>873</td><td>rsync</td><td>未授权访问</td></tr><tr><td>1080</td><td>socket</td><td>爆破：进行内网渗透</td></tr><tr><td>1352</td><td>lotus</td><td>爆破：弱口令\信息泄漏：源代码</td></tr><tr><td>1433</td><td>mssql</td><td>爆破：使用系统用户登录\注入攻击</td></tr><tr><td>1521</td><td>oracle</td><td>爆破：TNS\注入攻击</td></tr><tr><td>2049</td><td>nfs</td><td>配置不当</td></tr><tr><td>2181</td><td>zookeeper</td><td>未授权访问</td></tr><tr><td>3306</td><td>mysql</td><td>爆破\拒绝服务\注入</td></tr><tr><td>3389</td><td>rdp</td><td>爆破\Shift后门</td></tr><tr><td>4848</td><td>glassfish</td><td>爆破：控制台弱口令\认证绕过</td></tr><tr><td>5000</td><td>sybase/DB2</td><td>爆破\注入</td></tr><tr><td>5432</td><td>postgresql</td><td>缓冲区溢出\注入攻击\爆破：弱口令</td></tr><tr><td>5632</td><td>pcanywhere</td><td>拒绝服务\代码执行</td></tr><tr><td>5900</td><td>vnc</td><td>爆破：弱口令\认证绕过</td></tr><tr><td>6379</td><td>redis</td><td>未授权访问\爆破：弱口令</td></tr><tr><td>7001</td><td>weblogic</td><td>Java反序列化\控制台弱口令\控制台部署webshell</td></tr><tr><td>80/443/8080</td><td>web</td><td>常见web攻击\控制台爆破\对应服务器版本漏洞</td></tr><tr><td>8069</td><td>zabbix</td><td>远程命令执行</td></tr><tr><td>9090</td><td>websphere控制台</td><td>爆破：控制台弱口令\Java反序列</td></tr><tr><td>9200/9300</td><td>elasticsearch</td><td>远程代码执行</td></tr><tr><td>11211</td><td>memcacache</td><td>未授权访问</td></tr><tr><td>27017</td><td>mongodb</td><td>爆破\未授权访问</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常见端口号-amp-漏洞&quot;&gt;&lt;a href=&quot;#常见端口号-amp-漏洞&quot; class=&quot;headerlink&quot; title=&quot;常见端口号&amp;amp;漏洞&quot;&gt;&lt;/a&gt;常见端口号&amp;amp;漏洞&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;端口号&lt;/th&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="渗透笔记" scheme="http://kn0sky.com/categories/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="常见服务" scheme="http://kn0sky.com/categories/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【Vulnhub】Sunset:nightfall--Workthourgh：未完成</title>
     <link href="http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/"/>
     <id>http://kn0sky.com/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/</id>
     <published>2020-05-31T08:36:15.000Z</published>
-    <updated>2020-05-31T10:22:03.000Z</updated>
+    <updated>2020-05-31T10:44:11.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="【Vulnhub】Sunset-nightfall–Workthourgh"><a href="#【Vulnhub】Sunset-nightfall–Workthourgh" class="headerlink" title="【Vulnhub】Sunset:nightfall–Workthourgh"></a>【Vulnhub】Sunset:nightfall–Workthourgh</h2><blockquote><p>文章作者：kn0sky</p><p>作者博客：kn0sky.com</p></blockquote><h3 id="靶机信息"><a href="#靶机信息" class="headerlink" title="靶机信息"></a>靶机信息</h3><h3 id="用到的工具-知识"><a href="#用到的工具-知识" class="headerlink" title="用到的工具/知识"></a>用到的工具/知识</h3><ul><li><h3 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h3></li></ul><p>攻击机<code>IP</code>：192.168.101.5</p><p>靶机<code>IP</code>：192.168.101.6</p><p><strong>端口扫描：</strong></p><p><img src="image-20200531164459736.png" alt="image-20200531164459736"></p><p>目标开放了21/22/80/139/445/3306端口</p><p>这几个端口可能存在的问题：【找图片/表格】</p><p>80端口是Apache默认页面，目录扫描之后除了Apache还有一个403进不去</p><p>见到samba就枚举用户名：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum4linux 192.168.101.6</span><br></pre></td></tr></table></figure><p><img src="image-20200531181458414.png" alt="image-20200531181458414"></p><p>得到用户名：<code>matt</code>和<code>nightfall</code></p><p>使用<code>hydra</code>去爆破ftp账号弱口令：</p><p><img src="image-20200531182042736.png" alt="image-20200531182042736"></p><p>得到<code>matt</code>的密码为<code>cheese</code></p><p>登录ftp看看：</p><p><img src="image-20200531182159809.png" alt="image-20200531182159809"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href></a></li><li><a href></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="【Vulnhub】Sunset-nightfall–Workthourgh"><a href="#【Vulnhub】Sunset-nightfall–Workthourgh" class="headerlink" title="【Vulnhub】Sunset:nightfall–Workthourgh"></a>【Vulnhub】Sunset:nightfall–Workthourgh</h2><blockquote><p>文章作者：kn0sky</p><p>作者博客：kn0sky.com</p></blockquote><h3 id="靶机信息"><a href="#靶机信息" class="headerlink" title="靶机信息"></a>靶机信息</h3><h3 id="用到的工具-知识"><a href="#用到的工具-知识" class="headerlink" title="用到的工具/知识"></a>用到的工具/知识</h3><ul><li><h3 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h3></li></ul><p>攻击机<code>IP</code>：192.168.101.5</p><p>靶机<code>IP</code>：192.168.101.6</p><p><strong>端口扫描：</strong></p><p><img src="image-20200531164459736.png" alt="image-20200531164459736"></p><p>目标开放了21/22/80/139/445/3306端口</p><p>这几个端口可能存在的问题：【找图片/表格】</p><p>80端口是Apache默认页面，目录扫描之后除了Apache还有一个403进不去</p><p>见到samba就枚举用户名：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum4linux 192.168.101.6</span><br></pre></td></tr></table></figure><p><img src="image-20200531181458414.png" alt="image-20200531181458414"></p><p>得到用户名：<code>matt</code>和<code>nightfall</code></p><p>使用<code>hydra</code>去爆破ftp账号弱口令：</p><p><img src="image-20200531182042736.png" alt="image-20200531182042736"></p><p>得到<code>matt</code>的密码为<code>cheese</code></p><p>登录ftp看看：</p><p><img src="image-20200531182159809.png" alt="image-20200531182159809"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href></a></li><li><a href></a></li><li>1nslght-workthrough：<a href="https://blog.csdn.net/weixin_44214107/article/details/102617065" target="_blank" rel="external nofollow noopener noreferrer">https://blog.csdn.net/weixin_44214107/article/details/102617065</a></li></ul></blockquote>]]></content>
     
     <summary type="html">
     
@@ -484,58 +540,6 @@
       <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="汇编基础学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hexo联动Typora</title>
-    <link href="http://kn0sky.com/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo%E8%81%94%E5%8A%A8Typora/"/>
-    <id>http://kn0sky.com/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo%E8%81%94%E5%8A%A8Typora/</id>
-    <published>2020-05-13T10:40:49.000Z</published>
-    <updated>2020-05-13T11:07:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="hexo联动Typora-插入图片"><a href="#hexo联动Typora-插入图片" class="headerlink" title="hexo联动Typora 插入图片"></a>hexo联动Typora 插入图片</h2><p>使用Typora这款软件来写作hexo博客的时候，经常遇到了一个烦人的问题，那就是插入图片的时候，hexo要用的图片路径和Typora写作用的图片路径不一样</p><p>有两条思路来解决这个问题</p><ol><li>将hexo和Typora存放图片的路径设置为相同的</li><li>改变hexo或者Typora读取图片的路径</li></ol><p>第一种方法网上很好搜到，就不说了，这里谈谈第二种方法</p><hr><p>我这里hexo设置了，hexo-post-asset，好像是这个名字，反正就是图片会从同文章名文件夹里读取</p><p>在每个文件的YAML里添加如下行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typora-root-url: 装图片的文件夹名</span><br></pre></td></tr></table></figure><p>然后文章内插入图片,例如：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可行：</span><br><span class="line">![<span class="string">image-20200513185515393</span>](<span class="link">image-20200513185515393.png</span>)</span><br><span class="line">不可行:</span><br><span class="line">![<span class="string">image-20200513185515393</span>](<span class="link">/image-20200513185515393.png</span>)</span><br></pre></td></tr></table></figure><p>如图：</p><p><img src="image-20200513185515393.png" alt="image-20200513185515393"></p><p>这样图片既可以在hexo直接显示，也可以在typora编辑器上看到</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;hexo联动Typora-插入图片&quot;&gt;&lt;a href=&quot;#hexo联动Typora-插入图片&quot; class=&quot;headerlink&quot; title=&quot;hexo联动Typora 插入图片&quot;&gt;&lt;/a&gt;hexo联动Typora 插入图片&lt;/h2&gt;&lt;p&gt;使用Typora这款
-      
-    
-    </summary>
-    
-    
-      <category term="折腾笔记" scheme="http://kn0sky.com/categories/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="博客搭建" scheme="http://kn0sky.com/categories/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>51单片机入门03--按键</title>
-    <link href="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/"/>
-    <id>http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/</id>
-    <published>2020-05-13T05:27:19.000Z</published>
-    <updated>2020-05-20T12:46:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="51单片机入门03–按键"><a href="#51单片机入门03–按键" class="headerlink" title="51单片机入门03–按键"></a>51单片机入门03–按键</h2><h3 id="键盘的原理"><a href="#键盘的原理" class="headerlink" title="键盘的原理"></a>键盘的原理</h3><p><img src="image-20200513133011891.png" alt="image-20200513133011891"></p><p>按键需要一个上拉电阻，当没有按下去的时候，由于上拉电阻，左边的端口是高电平，当按键闭合后，左边的端口会变成低电平</p><p>这里按下的瞬间存在一个电平抖动的问题，所以需要消除抖动：</p><ol><li>硬件消抖：锁存器</li><li>软件消抖：延时程序</li></ol><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>分为两类：</p><ol><li>独立式键盘<ul><li>每个按键占用一根并口线</li><li>用于键位较少的情况，处理简单</li></ul></li><li>矩阵键盘<ul><li>键位分布在行列交叉点上</li><li>占用并口少，键位越多越明显</li></ul></li></ol><p>后面将以示例介绍两种键盘</p><h4 id="键位的识别"><a href="#键位的识别" class="headerlink" title="键位的识别"></a>键位的识别</h4><p>对于独立式键盘：直接识别对应并口即可</p><p>对于矩阵键盘：</p><ol><li>先检测键盘上是否有键被按下</li><li>然后识别按下的是哪一个按键</li></ol><h3 id="示例：每次按下按键试数码管数字加一（独立键盘）"><a href="#示例：每次按下按键试数码管数字加一（独立键盘）" class="headerlink" title="示例：每次按下按键试数码管数字加一（独立键盘）"></a>示例：每次按下按键试数码管数字加一（独立键盘）</h3><p>原理图：</p><p><img src="image-20200513193902218.png" alt="image-20200513193902218"></p><blockquote><p>P1~P3自带上拉电阻，P0需要自己加上拉电阻</p></blockquote><p>代码：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"reg51.h"</span></span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> s[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;;</span><br><span class="line">sbit key0=P0^<span class="number">0</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> num=<span class="number">0</span>;flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//程序消抖</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(key0==<span class="number">0</span>&amp;&amp;flag==<span class="number">0</span>)&#123;<span class="comment">//判断按键是否按下</span></span><br><span class="line">flag=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(key0==<span class="number">1</span>&amp;&amp;flag==<span class="number">1</span>)&#123;<span class="comment">//判断按键是否从按下状态中弹起，如果是，则实现功能</span></span><br><span class="line">num++;</span><br><span class="line">flag=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">seg</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(num&gt;<span class="number">9</span>)num=<span class="number">0</span>;</span><br><span class="line">P2 = s[num];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">key();</span><br><span class="line">seg();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="示例：按下不同的按键显示不同的数字（矩阵键盘）"><a href="#示例：按下不同的按键显示不同的数字（矩阵键盘）" class="headerlink" title="示例：按下不同的按键显示不同的数字（矩阵键盘）"></a>示例：按下不同的按键显示不同的数字（矩阵键盘）</h3><p>原理图：</p><p><img src="image-20200513204000884.png" alt="image-20200513204000884"></p><p>如何判断按下的按键是哪个按键？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">L3 L2 L1 L0 H3 H2 H1 H0  hex</span><br><span class="line">0  0  0  0  1  1  1  1   0x0f  默认情况</span><br><span class="line">0  0  0  0  1  1  1  0   0x0e  判断按下按键的行，H0</span><br><span class="line">1  1  1  1  0  0  0  0   0xf0  默认情况取反</span><br><span class="line">1  1  0  1  0  0  0  0   0xd0  判断按下按键的列，L1</span><br><span class="line">将第二行和第四行的值相加：0xde 即为(H0,L1)按键在P2中的值</span><br></pre></td></tr></table></figure><p>代码：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"reg51.h"</span></span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> s[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> num=<span class="number">99</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">120</span>;j++);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_scan</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> tmp=<span class="number">0</span>,tmp0=<span class="number">0</span>,tmp1=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断按下去的按键</span></span><br><span class="line">P1=<span class="number">0x0f</span>;</span><br><span class="line"><span class="keyword">if</span>(P1!=<span class="number">0x0f</span>)&#123;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">20</span>);<span class="comment">//还是这样消除抖动最方便</span></span><br><span class="line">tmp0 = P1;</span><br><span class="line">P1=<span class="number">0xf0</span>;</span><br><span class="line"><span class="keyword">if</span>(P1!=<span class="number">0xf0</span>) tmp1 = P1;</span><br><span class="line">&#125;</span><br><span class="line">tmp = tmp1+tmp0;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现功能</span></span><br><span class="line"><span class="keyword">if</span> (tmp == <span class="number">0xee</span>)num=<span class="number">0</span>; <span class="comment">//display 0</span></span><br><span class="line"><span class="keyword">if</span> (tmp == <span class="number">0xde</span>)num=<span class="number">1</span>; <span class="comment">//display 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span><br><span class="line">P2=s[num];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">key_scan();</span><br><span class="line"><span class="built_in">display</span>();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;51单片机入门03–按键&quot;&gt;&lt;a href=&quot;#51单片机入门03–按键&quot; class=&quot;headerlink&quot; title=&quot;51单片机入门03–按键&quot;&gt;&lt;/a&gt;51单片机入门03–按键&lt;/h2&gt;&lt;h3 id=&quot;键盘的原理&quot;&gt;&lt;a href=&quot;#键盘的原理&quot; c
-      
-    
-    </summary>
-    
-    
-      <category term="学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="51单片机学习笔记" scheme="http://kn0sky.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
